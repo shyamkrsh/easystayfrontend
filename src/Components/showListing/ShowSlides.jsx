@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Images({ img1, img2, img3, img4 }) {
+function ShowSlides({ img1, img2, img3, img4 }) {
 
  
 
@@ -41,4 +41,4 @@ function Images({ img1, img2, img3, img4 }) {
         </div >
     );
 }
-export default Images;
+export default ShowSlides;

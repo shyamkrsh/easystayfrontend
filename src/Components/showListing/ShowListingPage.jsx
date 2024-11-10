@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import ShowListingNav from './ShowListingNav'
-import Images from './images'
+import ShowSlides from './ShowSlides'
 import ListingsDetails from './ListingsDetails'
 import ApplyForm from './ApplyForm'
 import Footer from '../Footer'
@@ -56,7 +56,7 @@ function ShowListingPage() {
     <>
       <ShowListingNav />
       <div className='mt-20 '>
-        <Images 
+        <ShowSlides
         img1={listingData ? listingData.images[0].url : ""} img2={listingData ? listingData.images[1].url : ""}
         img3={listingData ? listingData.images[2].url : ""} img4={listingData ? listingData.images[3].url : ""}
         />
