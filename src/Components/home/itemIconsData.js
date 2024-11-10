@@ -1,7 +1,7 @@
 
 import hostel from '../../assets/images/hostel.png'
 import hotel from '../../assets/images/hotel.png'
-import resturant from '../../assets/images/resturant.jpg'
+import resturant from '../../assets/images/resturant.png'
 import flowerPark from '../../assets/images/flowerPark.png'
 import swimmingPool from '../../assets/images/swimmingPool.png'
 import boysHostel from '../../assets/images/boysHostel.png'

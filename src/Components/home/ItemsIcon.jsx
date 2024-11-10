@@ -5,8 +5,8 @@ import itemIcons from './itemIconsData'
 function ItemsIcon() {
 
     return (
-        <div className='mt-12'>
-            <h1 className='text-center font-semibold md:font-bold text-xl md:text-2xl mt-5 mb-3'>Available Services</h1>
+        <div className='mt-8 md:mt-12'>
+            <h1 className='text-center font-semibold md:font-bold text-xl md:text-2xl mt-5 mb-1 md:mb-3'>Available Services</h1>
             <div className='grid grid-cols-3 md:grid-cols-4 p-5 services overflow-y-auto overflow-x-hidden'>
                 {
                     itemIcons.map((item, index) => (

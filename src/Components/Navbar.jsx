@@ -137,7 +137,7 @@ export default function Navbar() {
                 window.location.href = "/"
             } else {
                 toast.error(res.data.message, {
-                    position: 'top-right'                   
+                    position: 'top-right'
                 })
             }
         }).catch((err) => {
@@ -332,18 +332,27 @@ export default function Navbar() {
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error">
-                                <MailIcon onClick={() => navigate("/messages")} />
-                            </Badge>
+                            {
+                                user && user._id ? <Badge badgeContent={4} color="error">
+                                    <MailIcon onClick={() => navigate("/messages")} />
+                                </Badge>
+                                : ""
+                            }
                         </IconButton>
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
+
+
                         >
-                            <Badge badgeContent={17} color="error">
-                                <NotificationsIcon onClick={() => navigate("/notifications")} />
-                            </Badge>
+                            {
+                                user && user._id ?
+                                    <Badge badgeContent={17} color="error">
+                                        <NotificationsIcon onClick={() => navigate("/notifications")} />
+                                    </Badge>
+                                    : ""
+                            }
                         </IconButton>
                         <IconButton
                             size="large"

@@ -7,7 +7,7 @@ function NotificationsPage() {
     return (
         <>
         <NotificationsNav/>
-        <div className='mt-16'>
+        <div className='mt-28'>
             <div className='overflow-x-hidden overflow-y-auto'>
                 <NotificationCard/>
                 <NotificationCard/>

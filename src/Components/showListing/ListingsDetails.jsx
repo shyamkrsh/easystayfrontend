@@ -29,7 +29,7 @@ function ListingsDetails({ owner, data }) {
                 <p><span className='text-xl font-semibold'>Contact</span> : +91 {owner?.mobNumber}</p>
 
                 <p className='flex items-center justify-between'>
-                    <button className='bg-green-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md' onClick={() => window.location.href = `https://wa.me/${owner?.mobNumber}`}>
+                    <button className='bg-green-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md' onClick={() => window.location.href = `https://wa.me/+91${owner?.mobNumber}`}>
                         <FaWhatsapp className='text-xl' />
                         <p>whatsapp</p>
                     </button>

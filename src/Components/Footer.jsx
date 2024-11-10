@@ -15,7 +15,7 @@ function Footer() {
                             <li><Link to="" className='flex items-center py-2'><span className='font-semibold text-[1rem] flex items-center'><MdEmail className='text-2xl me-3'/> Email</span> : <span className='text-blue-700 ms-3'>easystayngp@gmail.com</span></Link></li>
                             <li><Link to="" className='flex items-center py-2'><span className='font-semibold text-[1rem] flex items-center'><FaPhoneVolume className='text-2xl me-3'/> Phone</span> : +91 8200732962</Link></li>
                             <li><Link to="">
-                                <button className='bg-green-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md w-full' onClick={() => window.location.href = `https://wa.me/${8200732962}`}>
+                                <button className='bg-green-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md w-full' onClick={() => window.location.href = `https://wa.me/${+918200732962}`}>
                                     <FaWhatsapp className='text-xl' />
                                     <p>whatsapp</p>
                                 </button>

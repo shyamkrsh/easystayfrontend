@@ -17,7 +17,7 @@ function YourPosts() {
                 <h1 className='text-xl font-semibold'>𝙎𝙚𝙚 𝙮𝙤𝙪𝙧 𝙥𝙤𝙨𝙩𝙨</h1>
                 <p className='text-sm '>{time}</p>
             </div>
-            <div className='h-[100%] overflow-y-auto overflow-x-hidden'>
+            <div className='h-[100%] overflow-y-scroll overflow-x-hidden'>
                <PostLists/>
             </div>
 
