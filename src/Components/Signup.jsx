@@ -12,7 +12,7 @@ import toast from 'react-hot-toast';
 
 function Signup() {
 
-    const [image, setImage] = useState();
+    const [image, setImage] = useState([]);
     const navigate = useNavigate();
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {

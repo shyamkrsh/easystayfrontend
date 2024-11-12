@@ -13,7 +13,7 @@ function Listings() {
   const [loader, setLoader] = useState(false);
   const [search, setSearch] = useState("");
 
-  const {category} = useParams();
+  const { category } = useParams();
 
   useEffect(() => {
     setLoader(true);
@@ -22,7 +22,7 @@ function Listings() {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
-        
+
       })
     }, 1500);
 
@@ -41,13 +41,22 @@ function Listings() {
       <div className='mt-28 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4'>
 
         {
-          listings.map((item) => (
-            
+          search ?
+            listings.map((item) => (
+              <Link to={`/listings/show/${item._id}`} key={item._id}>
+                {search && item.location.split(", ").join("").toUpperCase().includes(search.split(", ").join("").toUpperCase()) ? (
+                  <Card key={item._id} image={item.images} title={item.title} price={item.price} description={item.description} street_address={item.location} />
+                ) : (
+                  ""
+                )}
+              </Link>
+            ))
+            :
+            listings.map((item) => (
               <Link to={`/listings/show/${item._id}`} key={item._id}>
                 <Card key={item._id} image={item.images} title={item.title} price={item.price} description={item.description} street_address={item.location} />
               </Link>
-          
-          ))
+            ))
 
         }
       </div>
