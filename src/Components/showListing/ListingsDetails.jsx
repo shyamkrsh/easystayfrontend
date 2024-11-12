@@ -8,23 +8,23 @@ function ListingsDetails({ owner, data }) {
     return (
         <div>
             <div className='main-container w-[100%] md:w-[100%]'>
-                <h2 className=' font-semibold md:text-2xl'>{data.title}</h2>
-                <h4 className={(data.availability == 'available') ? 'text-green-700' : 'text-red-700'}>{data.availability}</h4>
+                <h2 className=' font-semibold md:text-2xl'>{data?.title}</h2>
+                <h4 className={(data?.availability == 'available') ? 'text-green-700' : 'text-red-700'}>{data?.availability}</h4>
                 {/* Rating goes here */}
                 <p>Rating: </p>
                 <h2>⭐⭐⭐⭐⭐</h2>
-                <p className='mt-3'><span className='font-semibold text-xl'>Description</span> : {data.description}</p>
+                <p className='mt-3'><span className='font-semibold text-xl'>Description</span> : {data?.description}</p>
                 <p className='mt-1'>
                     <span className=''>
                         {/* <LocationOnIcon /> */}
                     </span>
                     <span className='font-semibold text-xl'>Location</span>
-                    : {data.location}</p>
+                    : {data?.location}</p>
 
                 <div>
                     <img src={map} className='my-5 rounded-md' />
                 </div>
-                <p><span className='mt-6 text-xl font-semibold'>Price</span> : ₹ {data.price}/-</p>
+                <p><span className='mt-6 text-xl font-semibold'>Price</span> : ₹ {data?.price}/-</p>
                 <p><span className='text-xl font-semibold'>Owner</span> : {owner?.name}</p>
                 <p><span className='text-xl font-semibold'>Contact</span> : +91 {owner?.mobNumber}</p>
 

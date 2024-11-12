@@ -24,13 +24,13 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchUserDetails = async () => {
-    const dataResponse = await fetch("/api/user-details", {
+    const dataResponse = await fetch("https://easystaybackend.onrender.com/api/user-details", {
       credentials: 'include',
     })
 
-    const dataApi = await dataResponse.json();
+    const dataApi = await dataResponse?.json();
     if (dataApi) {
-      dispatch(setUserDetails(dataApi.data));
+      dispatch(setUserDetails(dataApi?.data));
     }
   }
 

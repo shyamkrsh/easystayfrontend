@@ -8,7 +8,7 @@ function YourClients() {
     const [clients, setClients] = useState([]);
 
     useState(() => {
-        axios.get(`/api/listings/${user._id}/clients`).then((res) => {
+        axios.get(`https://easystaybackend.onrender.com/api/listings/${user._id}/clients`).then((res) => {
             setClients(res.data.data.clients);
         })
     }, [])
@@ -38,13 +38,13 @@ function YourClients() {
                     </tr>
 
                     {
-                        clients ? clients.map((client, index) => (
+                        clients ? clients?.map((client, index) => (
                             <tr key={index} className={index % 2 == 0 ? 'bg-slate-300 h-[2rem]  hover:opacity-80 cursor-pointer': "bg-slate-400 hover:opacity-80 cursor-pointer h-[2rem]"}>
                                 <td className='text-center'>{index+1}</td>
-                                <td className='text-center'>{client.name}</td>
-                                <td className='w-[20%] text-center'>{client.email}</td>
-                                <td className='text-center'>+91 {client.mobNumber}</td>
-                                <td className='text-center'>{client.location}</td>
+                                <td className='text-center'>{client?.name}</td>
+                                <td className='w-[20%] text-center'>{client?.email}</td>
+                                <td className='text-center'>+91 {client?.mobNumber}</td>
+                                <td className='text-center'>{client?.location}</td>
                                 <td className='text-center text-red-800'>Pending</td>
                             </tr>
                             

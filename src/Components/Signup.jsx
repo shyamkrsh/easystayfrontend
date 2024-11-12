@@ -22,13 +22,13 @@ function Signup() {
             formData.append(key, data[key]);
         });
 
-        axios.post("/api/signup", formData).then((res) => {
-            if (res.data.success) {
+        axios.post("https://easystaybackend.onrender.com/api/signup", formData).then((res) => {
+            if (res?.data?.success) {
                 toast.success("Signup successfully", {
                     position: 'top-right'
                 })
             } else {
-                toast.error(res.data.message, {
+                toast.error(res?.data?.message, {
                     position: 'top-right'
                 })
             }
@@ -57,7 +57,7 @@ function Signup() {
                             <img src={profile} alt="" className='w-[100px]' />
                             <p>{image.name}</p>
                         </label>
-                       <input type="file" name="image" id="image" className='hidden' onChange={(e) => setImage(e.target.files[0])} />
+                       <input type="file" name="image" id="image" className='hidden' onChange={(e) => setImage(e?.target?.files[0])} />
                     </div>
                     <div className='mt-3'>
                         <TextField

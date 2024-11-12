@@ -13,7 +13,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`/api/listings/${user._id}`).then((res) => {
+      axios.get(`https://easystaybackend.onrender.com/api/listings/${user._id}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
 
@@ -33,10 +33,10 @@ function Listings() {
       <div className='mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mb-24'>
 
         {
-          listings.map((item) => (
-            item.owner == user._id ?
+          listings?.map((item) => (
+            item?.owner == user?._id ?
               <Link to={`/listings/show/${item._id}`} key={item._id}>
-                <MyListingCard key={item._id} image={item.images} title={item.title} price={item.price} description={item.description} street_address={item.location} />
+                <MyListingCard key={item?._id} image={item?.images} title={item?.title} price={item?.price} description={item?.description} street_address={item?.location} />
               </Link>
               : ""
           ))

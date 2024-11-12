@@ -13,7 +13,7 @@ function ContactForm() {
     const navigate = useNavigate();
     const { register, handleSubmit,reset, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        axios.post("/api/contact/new", data).then((res) => {
+        axios.post("https://easystaybackend.onrender.com/api/contact/new", data).then((res) => {
             toast.success("Thanks for Contacting with us", {
                 position: 'top-right'
             })

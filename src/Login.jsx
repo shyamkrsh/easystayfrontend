@@ -19,10 +19,10 @@ function Login() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        axios.post('/api/login', data, {
+        axios.post('https://easystaybackend.onrender.com/api/login', data, {
             withCredentials: true,
         }).then((res) => {
-            if (res.data.success) {
+            if (res?.data?.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
                 });
@@ -30,7 +30,7 @@ function Login() {
                 fetchUserDetails();
                 navigate("/")
             } else {
-                toast.error(res.data.message, {
+                toast.error(res?.data?.message, {
                     position: 'top-right'
                 })
             }

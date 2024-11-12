@@ -18,7 +18,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`/api/listings/search/${category}`).then((res) => {
+      axios.get(`https://easystaybackend.onrender.com/api/listings/search/${category}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
@@ -42,19 +42,18 @@ function Listings() {
 
         {
           search ?
-            listings.map((item) => (
-              <Link to={`/listings/show/${item._id}`} key={item._id}>
-                {search && item.location.split(", ").join("").toUpperCase().includes(search.split(", ").join("").toUpperCase()) ? (
-                  <Card key={item._id} image={item.images} title={item.title} price={item.price} description={item.description} street_address={item.location} />
-                ) : (
-                  ""
-                )}
-              </Link>
+            listings?.map((item) => (
+              search && item?.location.split(", ").join("").toUpperCase().includes(search.split(", ").join("").toUpperCase()) ?
+                <Link to={`/listings/show/${item?._id}`} key={item?._id}>
+                  <Card key={item?._id} image={item?.images} title={item?.title} price={item?.price} description={item?.description} street_address={item?.location} />
+                </Link>
+
+                : null
             ))
             :
-            listings.map((item) => (
-              <Link to={`/listings/show/${item._id}`} key={item._id}>
-                <Card key={item._id} image={item.images} title={item.title} price={item.price} description={item.description} street_address={item.location} />
+            listings?.map((item) => (
+              <Link to={`/listings/show/${item?._id}`} key={item?._id}>
+                <Card key={item?._id} image={item?.images} title={item?.title} price={item?.price} description={item?.description} street_address={item?.location} />
               </Link>
             ))
 
@@ -62,7 +61,7 @@ function Listings() {
       </div>
 
       <div className='w-full text-center mt-28'>
-        <h1 className={listings.length != 0 ? "hidden" : 'text-3xl font-bold text-center p-5'}>No Such Result Available</h1>
+        <h1 className={listings?.length != 0 ? "hidden" : 'text-3xl font-bold text-center p-5'}>No Such Result Available</h1>
       </div>
 
       <div className='mt-[100%]'>

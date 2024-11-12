@@ -9,7 +9,7 @@ const initialState = {
     initialState,
     reducers: {
       setUserDetails : (state, action) => {
-        state.user = action.payload;
+        state.user = action?.payload;
       }
     },
   })

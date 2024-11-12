@@ -37,11 +37,11 @@ function MyListingCard({ image, title, price, description, street_address }) {
             <div className="slider-container">
                 <Slider ref={slider => (sliderRef = slider)} {...settings}>
                     {
-                        (image.length > 0) ? (
-                            image.map((item) => (
+                        (image?.length > 0) ? (
+                            image?.map((item) => (
 
-                                <div key={item._id}>
-                                    <img src={item.url} style={{ width: "100%" }} className=" h-[15rem] " />
+                                <div key={item?._id}>
+                                    <img src={item?.url} style={{ width: "100%" }} className=" h-[15rem] " />
                                 </div>
 
                             ))

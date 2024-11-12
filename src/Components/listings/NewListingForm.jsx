@@ -31,7 +31,7 @@ function NewListingForm() {
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
-    axios.post("/api/listings/new", formData, {
+    axios.post("https://easystaybackend.onrender.com/api/listings/new", formData, {
       withCredentials: true,
     }).then((res) => {
       toast.success("New Place added", {
@@ -127,7 +127,7 @@ function NewListingForm() {
                 id='image1'
                 name='images[image1]'
                 className='w-[150px] md:w-[200px]'
-                onChange={(e) => setImage1(e.target.files[0])}
+                onChange={(e) => setImage1(e?.target?.files[0])}
               />
             </div>
             <div className=''>
@@ -136,7 +136,7 @@ function NewListingForm() {
                 id='image2'
                 name='images[image2]'
                 className='w-[150px] md:w-[200px]'
-                onChange={(e) => setImage2(e.target.files[0])}
+                onChange={(e) => setImage2(e?.target?.files[0])}
               />
             </div>
           </div>
@@ -147,7 +147,7 @@ function NewListingForm() {
                 id='image3'
                 name='images[image3]'
                 className='w-[150px] md:w-[200px]'
-                onChange={(e) => setImage3(e.target.files[0])}
+                onChange={(e) => setImage3(e?.target?.files[0])}
               />
             </div>
             <div className=''>
@@ -156,7 +156,7 @@ function NewListingForm() {
                 id='image4'
                 name='images[image4]'
                 className='w-[150px] md:w-[200px]'
-                onChange={(e) => setImage4(e.target.files[0])}
+                onChange={(e) => setImage4(e?.target?.files[0])}
               />
             </div>
           </div>

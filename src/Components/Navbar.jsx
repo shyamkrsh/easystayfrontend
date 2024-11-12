@@ -100,7 +100,7 @@ export default function Navbar() {
 
 
     const onSubmit = (data) => {
-        axios.post('/api/login', data, {
+        axios.post('https://easystaybackend.onrender.com/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data)
@@ -126,7 +126,7 @@ export default function Navbar() {
 
 
     const handleLogout = async () => {
-        axios.get("/api/logout", {
+        axios.get("https://easystaybackend.onrender.com/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
@@ -234,8 +234,8 @@ export default function Navbar() {
                     color="inherit"
                 >
                     {
-                        (user && user.profileImage) ? (<div>
-                            <img src={user.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                        (user && user?.profileImage) ? (<div>
+                            <img src={user?.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                         </div>)
                             :
                             (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -283,12 +283,12 @@ export default function Navbar() {
                                     <ul className='mt-8 sidebar-list ps-5'>
 
                                         <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
-                                        <Link to={user && user._id ? "/dashboard" : '/'}><li><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
+                                        <Link to={user && user?._id ? "/dashboard" : '/'}><li><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
                                         <Link to="/about" ><li><FcAbout id='sidebar-icon' /> About Us</li></Link>
                                         <Link to="/contact" ><li><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>
                                         <Link to="/help" ><li><MdHelpCenter id='sidebar-icon' /> Help Center</li></Link>
                                         {
-                                            user && user._id ? (
+                                            user && user?._id ? (
                                                 <Link onClick={handleLogout} ><li><MdLogout id='sidebar-icon' /> Logout</li></Link>
                                             )
                                                 :
@@ -333,7 +333,7 @@ export default function Navbar() {
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
                         <IconButton size="large" aria-label="show 4 new mails" color="inherit">
                             {
-                                user && user._id ? <Badge badgeContent={4} color="error">
+                                user && user?._id ? <Badge badgeContent={4} color="error">
                                     <MailIcon onClick={() => navigate("/messages")} />
                                 </Badge>
                                 : ""
@@ -347,7 +347,7 @@ export default function Navbar() {
 
                         >
                             {
-                                user && user._id ?
+                                user && user?._id ?
                                     <Badge badgeContent={17} color="error">
                                         <NotificationsIcon onClick={() => navigate("/notifications")} />
                                     </Badge>
@@ -360,14 +360,14 @@ export default function Navbar() {
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={user && user._id ? handleProfileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleProfileMenuOpen : handleLoggedProfile}
 
                             color="inherit"
                         >
 
                             {
-                                (user && user.profileImage) ? (<div>
-                                    <img src={user.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                (user && user?.profileImage) ? (<div>
+                                    <img src={user?.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -381,13 +381,13 @@ export default function Navbar() {
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
 
-                            onClick={user && user._id ? handleMobileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleMobileMenuOpen : handleLoggedProfile}
 
                             color="inherit"
                         >
                             {
-                                (user && user.profileImage) ? (<div>
-                                    <img src={user.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                (user && user?.profileImage) ? (<div>
+                                    <img src={user?.profileImage} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)

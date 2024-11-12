@@ -95,7 +95,7 @@ export default function DashboardNav({search, setSearch}) {
      const navigate = useNavigate();
 
     const onSubmit = data => {
-        axios.post('/api/login', data, {
+        axios.post('https://easystaybackend.onrender.com/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data)
@@ -107,7 +107,7 @@ export default function DashboardNav({search, setSearch}) {
     };
 
     const handleLogout = () => {
-        axios.get("/api/logout", {
+        axios.get("https://easystaybackend.onrender.com/api/logout", {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data);
@@ -214,8 +214,8 @@ export default function DashboardNav({search, setSearch}) {
                     color="inherit"
                 >
                     {
-                        user && user.profileImage ? (<div>
-                            <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                        user && user?.profileImage ? (<div>
+                            <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                         </div>)
                             :
                             (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -307,13 +307,13 @@ export default function DashboardNav({search, setSearch}) {
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={user && user._id ? handleProfileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleProfileMenuOpen : handleLoggedProfile}
                             color="inherit"
                         >
 
                             {
-                                user && user.profileImage ? (<div>
-                                    <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                user && user?.profileImage ? (<div>
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -328,12 +328,12 @@ export default function DashboardNav({search, setSearch}) {
                             aria-label="show more"
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
-                            onClick={user && user._id ? handleMobileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleMobileMenuOpen : handleLoggedProfile}
                             color="inherit"
                         >
                             {
-                                user && user.profileImage ? (<div>
-                                    <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                user && user?.profileImage ? (<div>
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)

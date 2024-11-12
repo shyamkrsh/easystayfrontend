@@ -96,7 +96,7 @@ export default function SearchNavbar({ search, setSearch }) {
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
-        axios.post('/api/login', data, {
+        axios.post('https://easystaybackend.onrender.com/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
@@ -120,7 +120,7 @@ export default function SearchNavbar({ search, setSearch }) {
     };
 
     const handleLogout = () => {
-        axios.get("/api/logout", {
+        axios.get("https://easystaybackend.onrender.com/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
@@ -239,8 +239,8 @@ export default function SearchNavbar({ search, setSearch }) {
                     color="inherit"
                 >
                     {
-                        user && user.profileImage ? (<div>
-                            <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                        user && user?.profileImage ? (<div>
+                            <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                         </div>)
                             :
                             (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -316,7 +316,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                 placeholder="Search area…"
                                 inputProps={{ 'aria-label': 'search' }}
                                 value={search}
-                                onChange={() => setSearch(event.target.value)}
+                                onChange={() => setSearch(event?.target?.value)}
                             />
                         </form>
                     </Search>
@@ -349,13 +349,13 @@ export default function SearchNavbar({ search, setSearch }) {
                             aria-label="account of current user"
                             aria-controls={menuId}
                             aria-haspopup="true"
-                            onClick={user && user._id ? handleProfileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleProfileMenuOpen : handleLoggedProfile}
                             color="inherit"
                         >
 
                             {
-                                user && user.profileImage ? (<div>
-                                    <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                user && user?.profileImage ? (<div>
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -370,12 +370,12 @@ export default function SearchNavbar({ search, setSearch }) {
                             aria-label="show more"
                             aria-controls={mobileMenuId}
                             aria-haspopup="true"
-                            onClick={user && user._id ? handleMobileMenuOpen : handleLoggedProfile}
+                            onClick={user && user?._id ? handleMobileMenuOpen : handleLoggedProfile}
                             color="inherit"
                         >
                             {
                                 user && user.profileImage ? (<div>
-                                    <img src={user.profileImage || user.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)

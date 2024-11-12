@@ -25,7 +25,7 @@ function ShowListingPage() {
 
   useEffect(() => {
     try {
-      axios.get(`/api/listings/${id}/show`).then((res) => {
+      axios.get(`https://easystaybackend.onrender.com/api/listings/${id}/show`).then((res) => {
         setOwner(res.data.owner);
         setListingData(res.data.data);
       }).catch((err) => {
@@ -43,7 +43,7 @@ function ShowListingPage() {
   }
 
   const handleDeleteListing = () => {
-    axios.delete(`/api/listings/${id}/delete`).then((res) =>{
+    axios.delete(`https://easystaybackend.onrender.com/api/listings/${id}/delete`).then((res) =>{
       toast.success("Your post has been deleted");
       navigate("/dashboard");
     }).catch((err) => {
@@ -57,8 +57,8 @@ function ShowListingPage() {
       <ShowListingNav />
       <div className='mt-20 '>
         <ShowSlides
-        img1={listingData ? listingData.images[0].url : ""} img2={listingData ? listingData.images[1].url : ""}
-        img3={listingData ? listingData.images[2].url : ""} img4={listingData ? listingData.images[3].url : ""}
+        img1={listingData ? listingData?.images[0].url : ""} img2={listingData ? listingData?.images[1].url : ""}
+        img3={listingData ? listingData?.images[2].url : ""} img4={listingData ? listingData?.images[3].url : ""}
         />
       </div>
 
