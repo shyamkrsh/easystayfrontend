@@ -13,7 +13,7 @@ function CreateReviews({ id }) {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
 
-    axios.post(`/api/reviews/${id}/new`, {
+    axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/reviews/${id}/new`, {
       content: data.content,
       rating: value,
 

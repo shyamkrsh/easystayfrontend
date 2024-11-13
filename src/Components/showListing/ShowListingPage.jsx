@@ -25,7 +25,7 @@ function ShowListingPage() {
 
   useEffect(() => {
     try {
-      axios.get(`/api/listings/${id}/show`).then((res) => {
+      axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/listings/${id}/show`).then((res) => {
         setOwner(res.data.owner);
         setListingData(res.data.data);
       }).catch((err) => {

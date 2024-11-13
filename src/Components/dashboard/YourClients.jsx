@@ -8,7 +8,7 @@ function YourClients() {
     const [clients, setClients] = useState([]);
 
     useState(() => {
-        axios.get(`/api/listings/${user._id}/clients`).then((res) => {
+        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/listings/${user._id}/clients`).then((res) => {
             setClients(res.data.data.clients);
         })
     }, [])

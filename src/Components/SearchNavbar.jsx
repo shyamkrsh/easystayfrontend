@@ -98,7 +98,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
     const onSubmit = (data) => {
       
-        axios.post('/api/login', data, {
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/login`, data, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
@@ -124,7 +124,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
     }
     const handleLogout = () => {
-        axios.post("/api/logout", {
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
