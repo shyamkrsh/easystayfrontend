@@ -35,7 +35,7 @@ import { setUserDetails } from '../store/userSlice.jsx';
 import { MdDashboard } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
-import {logout} from '../store/userSlice.jsx'
+import { logout } from '../store/userSlice.jsx'
 
 
 // all module imported above
@@ -101,13 +101,13 @@ export default function Navbar() {
 
 
     const onSubmit = (data) => {
-        axios.post(import.meta.env.VITE_API_URL+'/api/login', data, {
+        axios.post(import.meta.env.VITE_API_URL + '/api/login', data, {
             withCredentials: true,
             headers: {
-                 'Content-Type': 'application/json',
+                'Content-Type': 'application/json',
             }
         }).then((res) => {
-           
+
             if (res.data.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
@@ -130,7 +130,7 @@ export default function Navbar() {
 
 
     const handleLogout = () => {
-        axios.get(import.meta.env.VITE_API_URL+"/api/logout", {
+        axios.get(import.meta.env.VITE_API_URL + "/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
@@ -283,8 +283,10 @@ export default function Navbar() {
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
                                 <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
-                                    <img className='w-[50%] mx-auto' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
-                                    <h2 className='font-bold '>EasyStay</h2>
+                                    <div className='flex items-center gap-3 ps-5'>
+                                        <img className='w-[50px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
+                                        <h2 className='font-bold '>EasyStay</h2>
+                                    </div>
                                     <ul className='mt-8 sidebar-list ps-5'>
 
                                         <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
@@ -299,10 +301,6 @@ export default function Navbar() {
                                                 :
                                                 (<Link to="/login"  ><li><MdLogin id='sidebar-icon' /> Login</li></Link>)
                                         }
-
-
-                                        {/* <Link to="/signup" ><li><SiGnuprivacyguard id='sidebar-icon' /> Signup</li></Link> */}
-
 
                                     </ul>
                                 </div>
@@ -341,7 +339,7 @@ export default function Navbar() {
                                 user && user?._id ? <Badge badgeContent={4} color="error">
                                     <MailIcon onClick={() => navigate("/messages")} />
                                 </Badge>
-                                : ""
+                                    : ""
                             }
                         </IconButton>
                         <IconButton

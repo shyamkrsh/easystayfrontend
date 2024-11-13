@@ -280,24 +280,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                 <Link onClick={() => window.history.back()} ><IoArrowBack /></Link>
 
                             </div>
-                            <div className="drawer-side">
-                                <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
-
-                                <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
-                                    <h2 className='font-bold mt-8'>EasyStay</h2>
-                                    <ul className='mt-36 sidebar-list ps-5'>
-
-
-                                        <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
-                                        <Link to="/" ><li><FcAbout id='sidebar-icon' /> About</li></Link>
-                                        <Link to="/" ><li><IoIosContact id='sidebar-icon' /> Contact</li></Link>
-                                        <Link to="/" ><li><MdLogin id='sidebar-icon' /> Login</li></Link>
-                                        <Link onClick={handleLogout}><li><MdLogout id='sidebar-icon' /> Logout</li></Link>
-                                        <Link to="/" ><li><SiGnuprivacyguard id='sidebar-icon' /> Signup</li></Link>
-
-                                    </ul>
-                                </div>
-                            </div>
+                            
                         </div>
 
                     </IconButton>
