@@ -101,7 +101,7 @@ export default function Navbar() {
 
 
     const onSubmit = (data) => {
-        axios.post('/api/login', data, {
+        axios.post(import.meta.env.VITE_API_URL+'/api/login', data, {
             withCredentials: true,
             headers: {
                  'Content-Type': 'application/json',
@@ -130,7 +130,7 @@ export default function Navbar() {
 
 
     const handleLogout = () => {
-        axios.get("/api/logout", {
+        axios.get(import.meta.env.VITE_API_URL+"/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {

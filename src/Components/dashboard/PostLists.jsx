@@ -13,7 +13,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`/api/listings/${user._id}`).then((res) => {
+      axios.get(`${import.meta.env.VITE_API_URL}/api/listings/${user._id}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
 

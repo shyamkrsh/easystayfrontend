@@ -24,7 +24,7 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchUserDetails = async () => {
-    const dataResponse = await fetch("/api/user-details", {
+    const dataResponse = await fetch(import.meta.env.VITE_API_URL+"/api/user-details", {
       method: "GET",
       credentials: 'include',
     })

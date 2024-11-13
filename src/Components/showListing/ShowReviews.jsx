@@ -7,7 +7,7 @@ function ShowReviews({ id }) {
 
     useEffect(() => {
         try {
-            axios.get(`/api/reviews/${id}/show`).then((res) => {
+            axios.get(`${import.meta.env.VITE_API_URL}/api/reviews/${id}/show`).then((res) => {
                 setListingData(res?.data?.data?.reviews);
 
             }).catch((err) => {
