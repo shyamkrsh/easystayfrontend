@@ -13,15 +13,12 @@ function Listings() {
   const [loader, setLoader] = useState(false);
   const [search, setSearch] = useState("");
 
-  const API_URL = 'https://easystaybackend.onrender.com'
-  //const API_URL = 'http://localhost:8080'
-
   const { category } = useParams();
 
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`${API_URL}/api/listings/search/${category}`).then((res) => {
+      axios.get(`/api/listings/search/${category}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
