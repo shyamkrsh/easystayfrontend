@@ -283,7 +283,7 @@ export default function Navbar() {
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
                                 <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
-                                    <div className='flex items-center gap-3 ps-5'>
+                                    <div className='flex items-center gap-3 ps-3 mt-10'>
                                         <img className='w-[50px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
                                         <h2 className='font-bold '>EasyStay</h2>
                                     </div>
