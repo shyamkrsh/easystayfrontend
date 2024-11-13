@@ -14,10 +14,14 @@ function CreateReviews({ id }) {
   const onSubmit = (data) => {
 
     axios.post(`https://easystaybackend.vercel.app/api/reviews/${id}/new`, {
+      
       content: data.content,
       rating: value,
-
-    }).then((res) => {
+    },
+    {
+      withCredentials: true,
+    }
+  ).then((res) => {
       if(res.data.success){
         toast.success("Your review added", {
           position: 'top-right'
