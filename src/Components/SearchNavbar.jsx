@@ -124,7 +124,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
     }
     const handleLogout = () => {
-        axios.get("/api/logout", {
+        axios.post("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {

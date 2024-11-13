@@ -130,7 +130,7 @@ export default function Navbar() {
 
 
     const handleLogout = () => {
-        axios.get("/api/logout", {
+        axios.post("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
