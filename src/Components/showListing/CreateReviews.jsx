@@ -13,7 +13,7 @@ function CreateReviews({ id }) {
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
 
-    axios.post(`https://easystaybackend.onrender.com/api/reviews/${id}/new`, {
+    axios.post(`/api/reviews/${id}/new`, {
       content: data.content,
       rating: value,
 

@@ -13,7 +13,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`https://easystaybackend.onrender.com/api/listings/${user._id}`).then((res) => {
+      axios.get(`/api/listings/${user._id}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
 

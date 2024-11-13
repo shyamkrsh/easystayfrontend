@@ -35,6 +35,7 @@ import { setUserDetails } from '../store/userSlice.jsx';
 import { MdDashboard } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
+import {logout} from '../store/userSlice.jsx'
 
 
 // all module imported above
@@ -100,7 +101,7 @@ export default function Navbar() {
 
 
     const onSubmit = (data) => {
-        axios.post('https://easystaybackend.onrender.com/api/login', data, {
+        axios.post('/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data)
@@ -126,14 +127,15 @@ export default function Navbar() {
 
 
     const handleLogout = async () => {
-        axios.get("https://easystaybackend.onrender.com/api/logout", {
+        axios.get("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
                 })
-                dispatch(setUserDetails(null));
+                dispatch(logout());
+                
                 window.location.href = "/"
             } else {
                 toast.error(res.data.message, {

@@ -8,7 +8,7 @@ function YourClients() {
     const [clients, setClients] = useState([]);
 
     useState(() => {
-        axios.get(`https://easystaybackend.onrender.com/api/listings/${user._id}/clients`).then((res) => {
+        axios.get(`/api/listings/${user._id}/clients`).then((res) => {
             setClients(res.data.data.clients);
         })
     }, [])

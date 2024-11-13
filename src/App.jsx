@@ -24,7 +24,8 @@ function App() {
   const dispatch = useDispatch();
 
   const fetchUserDetails = async () => {
-    const dataResponse = await fetch("https://easystaybackend.onrender.com/api/user-details", {
+    const dataResponse = await fetch("/api/user-details", {
+      method: "GET",
       credentials: 'include',
     })
 

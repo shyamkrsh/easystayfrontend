@@ -7,7 +7,7 @@ function ShowReviews({ id }) {
 
     useEffect(() => {
         try {
-            axios.get(`https://easystaybackend.onrender.com/api/reviews/${id}/show`).then((res) => {
+            axios.get(`/api/reviews/${id}/show`).then((res) => {
                 setListingData(res?.data?.data?.reviews);
 
             }).catch((err) => {

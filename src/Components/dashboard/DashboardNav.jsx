@@ -107,7 +107,7 @@ export default function DashboardNav({search, setSearch}) {
     };
 
     const handleLogout = () => {
-        axios.get("https://easystaybackend.onrender.com/api/logout", {
+        axios.get("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data);

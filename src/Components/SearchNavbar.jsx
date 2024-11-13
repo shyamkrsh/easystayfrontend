@@ -36,6 +36,7 @@ import { setUserDetails } from '../store/userSlice';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
+import {logout} from '../store/userSlice'
 
 
 
@@ -96,7 +97,7 @@ export default function SearchNavbar({ search, setSearch }) {
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
-        axios.post('https://easystaybackend.onrender.com/api/login', data, {
+        axios.post('/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
@@ -120,14 +121,14 @@ export default function SearchNavbar({ search, setSearch }) {
     };
 
     const handleLogout = () => {
-        axios.get("https://easystaybackend.onrender.com/api/logout", {
+        axios.get("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             if (res.data.success) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
                 })
-                dispatch(setUserDetails(null));
+                dispatch(logout());
                 window.location.href = "/"
             } else {
                 toast.error(res.data.message, {

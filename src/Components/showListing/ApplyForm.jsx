@@ -11,7 +11,7 @@ function ApplyForm({id}) {
 
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        axios.post(`https://easystaybackend.onrender.com/api/application/${id}/new`, data, {
+        axios.post(`/api/application/${id}/new`, data, {
             withCredentials: true,
         }).then((res) => {
             toast.success("Application accepted", {

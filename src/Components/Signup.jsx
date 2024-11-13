@@ -22,7 +22,7 @@ function Signup() {
             formData.append(key, data[key]);
         });
 
-        axios.post("https://easystaybackend.onrender.com/api/signup", formData).then((res) => {
+        axios.post("/api/signup", formData).then((res) => {
             if (res?.data?.success) {
                 toast.success("Signup successfully", {
                     position: 'top-right'

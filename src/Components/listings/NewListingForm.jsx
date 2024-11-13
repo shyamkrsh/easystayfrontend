@@ -31,7 +31,7 @@ function NewListingForm() {
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
-    axios.post("https://easystaybackend.onrender.com/api/listings/new", formData, {
+    axios.post("/api/listings/new", formData, {
       withCredentials: true,
     }).then((res) => {
       toast.success("New Place added", {

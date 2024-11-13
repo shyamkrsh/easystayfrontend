@@ -18,7 +18,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`https://easystaybackend.onrender.com/api/listings/search/${category}`).then((res) => {
+      axios.get(`/api/listings/search/${category}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
