@@ -103,8 +103,11 @@ export default function Navbar() {
     const onSubmit = (data) => {
         axios.post('/api/login', data, {
             withCredentials: true,
+            headers: {
+                 'Content-Type': 'application/json',
+            }
         }).then((res) => {
-            console.log(res.data)
+           
             if (res.data.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
@@ -126,7 +129,7 @@ export default function Navbar() {
     }
 
 
-    const handleLogout = async () => {
+    const handleLogout = () => {
         axios.get("/api/logout", {
             withCredentials: true,
         }).then((res) => {
@@ -135,13 +138,13 @@ export default function Navbar() {
                     position: 'top-right'
                 })
                 dispatch(logout());
-                
                 window.location.href = "/"
             } else {
                 toast.error(res.data.message, {
                     position: 'top-right'
                 })
             }
+
         }).catch((err) => {
             toast.error(err.message, {
                 position: 'top-right'

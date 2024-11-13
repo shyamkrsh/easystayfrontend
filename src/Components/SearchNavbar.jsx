@@ -97,29 +97,32 @@ export default function SearchNavbar({ search, setSearch }) {
     const dispatch = useDispatch();
 
     const onSubmit = (data) => {
+      
         axios.post('/api/login', data, {
             withCredentials: true,
+            headers: {
+                'Content-Type': 'application/json',
+            }
         }).then((res) => {
-            if (res.data.success) {
+            if (res?.data?.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
                 });
                 fetchUserDetails();
                 window.location.href = "/"
             } else {
-                toast.error(res.data.message, {
+                toast.error(res?.data?.message, {
                     position: 'top-right'
-                })
+                });
             }
 
         }).catch((err) => {
-            toast.error(err.message, {
+            toast.error(err?.message, {
                 position: 'top-right'
-            })
-            console.log(err);
+            });
         })
-    };
 
+    }
     const handleLogout = () => {
         axios.get("/api/logout", {
             withCredentials: true,
@@ -317,7 +320,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                 placeholder="Search area…"
                                 inputProps={{ 'aria-label': 'search' }}
                                 value={search}
-                                onChange={() => setSearch(event?.target?.value)}
+                                onChange={() => setSearch(event.target.value)}
                             />
                         </form>
                     </Search>
@@ -404,7 +407,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                     type="text"
                                     autoComplete="current-email"
                                     className='w-full'
-                                    {...register("name", { required: true })}
+                                    {...register("email", { required: true })}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
                             </div>
