@@ -18,9 +18,16 @@ function CreateReviews({ id }) {
       rating: value,
 
     }).then((res) => {
-      toast.success("Your review added", {
-        position: 'top-right'
-      });
+      if(res.data.success){
+        toast.success("Your review added", {
+          position: 'top-right'
+        });
+      }else{
+        toast.success(res.data.message, {
+          position: 'top-right'
+        });
+      }
+      
       reset()
       setValue(1);
     }).catch((err) => {
