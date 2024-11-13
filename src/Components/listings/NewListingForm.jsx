@@ -31,7 +31,7 @@ function NewListingForm() {
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
-    axios.post(import.meta.env.VITE_API_URL+"/api/listings/new", formData, {
+    axios.post("/api/listings/new", formData, {
       withCredentials: true,
     }).then((res) => {
       toast.success("New Place added", {

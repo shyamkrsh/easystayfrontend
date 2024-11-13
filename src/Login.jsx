@@ -19,7 +19,7 @@ function Login() {
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
     const onSubmit = (data) => {
-        axios.post(import.meta.env.VITE_API_URL+'/api/login', data, {
+        axios.post('/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             if (res?.data?.success) {

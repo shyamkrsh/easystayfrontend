@@ -25,7 +25,7 @@ function ShowListingPage() {
 
   useEffect(() => {
     try {
-      axios.get(`${import.meta.env.VITE_API_URL}/api/listings/${id}/show`).then((res) => {
+      axios.get(`/api/listings/${id}/show`).then((res) => {
         setOwner(res.data.owner);
         setListingData(res.data.data);
       }).catch((err) => {
@@ -43,7 +43,7 @@ function ShowListingPage() {
   }
 
   const handleDeleteListing = () => {
-    axios.delete(`${import.meta.env.VITE_API_URL}/api/listings/${id}/delete`).then((res) =>{
+    axios.delete(`/api/listings/${id}/delete`).then((res) =>{
       toast.success("Your post has been deleted");
       navigate("/dashboard");
     }).catch((err) => {

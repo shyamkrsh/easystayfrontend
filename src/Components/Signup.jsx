@@ -22,7 +22,7 @@ function Signup() {
             formData.append(key, data[key]);
         });
 
-        axios.post(import.meta.env.VITE_API_URL+"/api/signup", formData).then((res) => {
+        axios.post("/api/signup", formData).then((res) => {
             if (res?.data?.success) {
                 toast.success("Signup successfully", {
                     position: 'top-right'

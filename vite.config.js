@@ -5,11 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   server: {
     proxy: {
-      '/api': {
-        target: 'https://easystaybackend.onrender.com', // Your backend URL
-        changeOrigin: true,  // To avoid CORS issues
-        secure: true,       // Set to false if you’re using HTTP
-      }
+      '/api': "http://localhost:8080"
     }
   },
   plugins: [react()],

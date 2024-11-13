@@ -95,7 +95,7 @@ export default function DashboardNav({search, setSearch}) {
      const navigate = useNavigate();
 
     const onSubmit = data => {
-        axios.post(import.meta.env.VITE_API_URL+'/api/login', data, {
+        axios.post('/api/login', data, {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data)
@@ -107,7 +107,7 @@ export default function DashboardNav({search, setSearch}) {
     };
 
     const handleLogout = () => {
-        axios.get(import.meta.env.VITE_API_URL+"/api/logout", {
+        axios.get("/api/logout", {
             withCredentials: true,
         }).then((res) => {
             console.log(res.data);
