@@ -23,7 +23,7 @@ function CreateReviews({ id }) {
           position: 'top-right'
         });
       }else{
-        toast.success(res.data.message, {
+        toast.error(res.data.message, {
           position: 'top-right'
         });
       }
