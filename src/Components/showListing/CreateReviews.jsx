@@ -12,7 +12,7 @@ function CreateReviews({ id }) {
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-
+    console.log(data)
     axios.post(`https://easystaybackend.vercel.app/api/reviews/${id}/new`, {
       
       content: data.content,
