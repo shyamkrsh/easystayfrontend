@@ -18,7 +18,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`${import.meta.env.VITE_API_URL}/api/listings/search/${category}`).then((res) => {
+      axios.get(`https://easystaybackend.vercel.app/api/listings/search/${category}`).then((res) => {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
