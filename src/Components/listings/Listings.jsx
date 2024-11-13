@@ -13,8 +13,8 @@ function Listings() {
   const [loader, setLoader] = useState(false);
   const [search, setSearch] = useState("");
 
-  // const API_URL = 'https://easystaybackend.onrender.com'
-  const API_URL = 'http://localhost:8080'
+  const API_URL = 'https://easystaybackend.onrender.com'
+  //const API_URL = 'http://localhost:8080'
 
   const { category } = useParams();
 
