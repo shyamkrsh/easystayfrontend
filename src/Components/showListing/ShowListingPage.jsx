@@ -43,7 +43,7 @@ function ShowListingPage() {
   }
 
   const handleDeleteListing = () => {
-    axios.delete(`/api/listings/${id}/delete`).then((res) =>{
+    axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/listings/${id}/delete`).then((res) =>{
       toast.success("Your post has been deleted");
       navigate("/dashboard");
     }).catch((err) => {

@@ -14,42 +14,50 @@ const itemIcons = [
     {
         image: hostel,
         title: "Hostels",
-        link: `/listings/search/${"hostel"}`
+        link: `/listings/search/${"hostel"}`,
+        content: 'Here you can search for Hostel related services',
     },
     {
         image: hotel,
         title: "Hotels",
-        link: `/listings/search/${"hotel"}`
+        link: `/listings/search/${"hotel"}`,
+        content: 'Here you can search for Hostel related services',
     },
     {
         image: resturant,
         title: "Resturants",
-        link: `/listings/search/${"resturant"}`
+        link: `/listings/search/${"resturant"}`,
+        content: 'Here you can search for Hostel related services',
     },
     {
         image: flowerPark,
         title: "Parks",
-        link: `/listings/search/${"park"}`
+        link: `/listings/search/${"park"}`,
+        content: 'Here you can search for Hostel related services',
     },
     {
         image: swimmingPool,
         title: "Swimming Pools",
-        link: `/listings/search/${"swimmingPool"}`
+        link: `/listings/search/${"swimmingPool"}`,
+        content: 'Here you can search for Hostel related services',
     },
-    {
-        image: boysHostel,
-        title: "Boys Hostels",
-        link: `/listings/search/${"boysHostel"}`
-    },
-    {
-        image: girlsHostel,
-        title: "Girls Hostels",
-        link: `/listings/search/${"girlsHostel"}`
-    },
+    // {
+    //     image: boysHostel,
+    //     title: "Boys Hostels",
+    //     link: `/listings/search/${"boysHostel"}`,
+    //     content: 'Here you can search for Hostel related services',
+    // },
+    // {
+    //     image: girlsHostel,
+    //     title: "Girls Hostels",
+    //     link: `/listings/search/${"girlsHostel"}`,
+    //     content: 'Here you can search for Hostel related services',
+    // },
     {
         image: roomsForRent,
         title: "Rooms For Rent",
-        link: `/listings/search/${"roomForRent"}`
+        link: `/listings/search/${"roomForRent"}`,
+        content: 'Here you can search for Hostel related services',
     }
 ]
 

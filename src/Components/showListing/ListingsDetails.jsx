@@ -5,6 +5,11 @@ import map from '../../assets/images/map.jpg'
 import { toast } from 'react-hot-toast';
 
 function ListingsDetails({ owner, data }) {
+
+    const handleSaveItem = () => {
+        console.log("set to local storage")
+        localStorage.setItem('itemId', 'shyam');
+    }
     return (
         <div>
             <div className='main-container w-[100%] md:w-[100%]'>
@@ -33,7 +38,7 @@ function ListingsDetails({ owner, data }) {
                         <FaWhatsapp className='text-xl' />
                         <p>whatsapp</p>
                     </button>
-                    <button className='bg-blue-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md' onClick={() => window.location.href = ``}>
+                    <button className='bg-blue-600 text-white text-xl mt-5 flex items-center justify-center gap-2 px-4 py-2 rounded-md' onClick={handleSaveItem}>
                         <p>Save</p>
                     </button>
                 </p>

@@ -35,12 +35,10 @@ function HomePage() {
         <Hero />
         <ItemsIcon />
       </div>
-      <div className='hidden md:block'>
+      <div className=''>
         <Footer />
       </div>
-      <div className='md:hidden'>
-        <BottomAppBar />
-      </div>
+      
     </div>
   )
 }

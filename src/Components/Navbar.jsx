@@ -9,7 +9,7 @@ import InputBase from '@mui/material/InputBase';
 import Badge from '@mui/material/Badge';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
+import { FiMenu } from "react-icons/fi";
 import SearchIcon from '@mui/icons-material/Search';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MailIcon from '@mui/icons-material/Mail';
@@ -36,7 +36,7 @@ import { MdDashboard } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
 import { useEffect } from 'react';
-
+import AddIcon from '@mui/icons-material/Add';
 
 
 // all module imported above
@@ -132,7 +132,7 @@ export default function Navbar() {
 
 
     const handleLogout = () => {
-        axios.post(`${baseUrl}/api/logout`,{},{withCredentials: true}).then((res) => {
+        axios.post(`${baseUrl}/api/logout`, {}, { withCredentials: true }).then((res) => {
             if (res.data.success) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
@@ -154,7 +154,7 @@ export default function Navbar() {
         })
     }
 
-  
+
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);
@@ -193,6 +193,7 @@ export default function Navbar() {
         >
             <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
             <MenuItem onClick={() => navigate("/dashboard")}>My Dashboard</MenuItem>
+            <MenuItem onClick={() => navigate("/listings/new")}>Post your Item</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
     );
@@ -281,7 +282,10 @@ export default function Navbar() {
                         <div className="drawer z-20">
                             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                             <div className="drawer-content ">
-                                <label htmlFor="my-drawer" className=" drawer-button "><MenuIcon className='-mt-3' /></label>
+                                <label htmlFor="my-drawer" className=" drawer-button ">
+                                    <FiMenu />
+
+                                </label>
                             </div>
                             <div className="drawer-side">
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
@@ -295,6 +299,9 @@ export default function Navbar() {
 
                                         <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
                                         <Link to={user && user?._id ? "/dashboard" : '/'}><li><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
+
+                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li><AddIcon id='sidebar-icon' />Post you Item</li></Link>
+
                                         <Link to="/about" ><li><FcAbout id='sidebar-icon' /> About Us</li></Link>
                                         <Link to="/contact" ><li><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>
                                         <Link to="/help" ><li><MdHelpCenter id='sidebar-icon' /> Help Center</li></Link>
@@ -305,6 +312,7 @@ export default function Navbar() {
                                                 :
                                                 (<Link to="/login"  ><li><MdLogin id='sidebar-icon' /> Login</li></Link>)
                                         }
+
 
                                     </ul>
                                 </div>
@@ -322,8 +330,9 @@ export default function Navbar() {
                         <h1 className='text-2xl font-bold'>EasyStay</h1>
                     </Typography>
 
+
                     <Link to={`/listings/search/${"hostel"}`}>
-                        <Search>
+                        <Search className='hidden md:block'>
                             <form method="get" action="/search" className='md:w-[400px]'>
                                 <SearchIconWrapper>
                                     <SearchIcon />
@@ -337,15 +346,13 @@ export default function Navbar() {
                     </Link>
 
                     <Box sx={{ flexGrow: 1 }} />
+
+                    <div className='md:hidden'>
+                        <SearchIcon />
+                    </div>
+
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            {
-                                user && user?._id ? <Badge badgeContent={4} color="error">
-                                    <MailIcon onClick={() => navigate("/messages")} />
-                                </Badge>
-                                    : ""
-                            }
-                        </IconButton>
+
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
@@ -361,6 +368,7 @@ export default function Navbar() {
                                     : ""
                             }
                         </IconButton>
+
                         <IconButton
                             size="large"
                             edge="end"
@@ -381,6 +389,7 @@ export default function Navbar() {
                             }
                         </IconButton>
                     </Box>
+
                     <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
                         <IconButton
                             size="large"
