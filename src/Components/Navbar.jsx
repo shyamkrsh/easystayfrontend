@@ -347,7 +347,7 @@ export default function Navbar() {
 
                     <Box sx={{ flexGrow: 1 }} />
 
-                    <div className='md:hidden'>
+                    <div className='md:hidden' onClick={() => navigate(`/listings/search/${"hostel"}`)}>
                         <SearchIcon />
                     </div>
 

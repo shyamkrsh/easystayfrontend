@@ -7,7 +7,7 @@ function ItemsIcon() {
     return (
         <div className='mt-8 md:mt-12'>
             <h1 className='text-center font-semibold md:font-bold text-xl md:text-2xl mt-5 mb-1 md:mb-5'>Available Services</h1>
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-5 gap-5 services overflow-y-auto overflow-x-hidden mt-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-5 gap-5 services mt-5'>
                 {
                     itemIcons?.map((item, index) => (
                         <Link to={item?.link} key={index}>
