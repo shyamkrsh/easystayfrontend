@@ -46,7 +46,7 @@ function Login() {
 
     return (
         <>
-            <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-5'>
+            <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-3'>
                 <Link onClick={() => window.history.back()} ><IoArrowBack className='text-2xl font-extrabold' /></Link>
                 <h2 className='text-xl font-semibold'>Login to your Account</h2>
             </div>

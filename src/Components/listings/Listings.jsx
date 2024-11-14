@@ -31,9 +31,9 @@ function Listings() {
   return (
     <>
       <SearchNavbar search={search} setSearch={setSearch} />
-      <div className='mb-32'>
+      {/* <div className='mb-20'>
         <Filter />
-      </div>
+      </div> */}
       <div className={loader ? " mx-auto  text-black w-[100%] h-[100vh] items-center justify-center fixed" : "hidden"}>
         <Loader />
       </div>

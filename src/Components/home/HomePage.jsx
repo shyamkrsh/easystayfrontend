@@ -23,13 +23,13 @@ function HomePage() {
   })
 
   return (
-    <div className='overflow-hidden'>
+    <div className='overflow-hidden bg-white'>
       {/* <div className={loader ? " mx-auto  text-black w-[100%] h-[100vh] items-center justify-center fixed" : "hidden"}> */}
-        {/* <Loader /> */}
+      {/* <Loader /> */}
       {/* </div> */}
 
-   
-      
+
+
       <Navbar />
       <div className='mt-16'>
         <Hero />
@@ -38,7 +38,7 @@ function HomePage() {
       <div className=''>
         <Footer />
       </div>
-      
+
     </div>
   )
 }

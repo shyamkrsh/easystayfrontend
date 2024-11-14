@@ -6,8 +6,8 @@ import { FaPhoneVolume } from "react-icons/fa6";
 
 function Footer() {
     return (
-        <div>
-            <footer className="footer footer-center bg-base-200 text-base-content rounded p-10 absolute mb-0 mt-[50%]">
+        <div >
+            <footer className="footer footer-center bg-base-300 text-base-content rounded-tr-3xl rounded-tl-3xl p-10 absolute mb-0 mt-10 ">
                 <div className='grid grid-cols-1 md:grid-cols-3 w-full items-center'>
                     <div className="col-1">
                         <ul className='text-left'>
@@ -50,7 +50,7 @@ function Footer() {
                 <div>
                     
                     <p className='md:text-3xl'>┗━━━━━━⊱ 𝑵𝑮𝑷 𝑷𝒂𝒕𝒏𝒂-13 ⊰━━━━━━┛</p>
-                    <p>Copyright © {new Date().getFullYear()} - Developed by Ngpians</p>
+                    <p>Copyright © {new Date().getFullYear()} - All rights reserved</p>
                 </div>
             </footer>
         </div>

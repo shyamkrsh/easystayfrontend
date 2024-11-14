@@ -293,7 +293,7 @@ export default function Navbar() {
                                 <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
                                     <div className='flex items-center gap-3 ps-3 mt-10'>
                                         <img className='w-[50px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
-                                        <h2 className='font-bold '>EasyStay</h2>
+                                        <h1 className='text-2xl font-bold'>EasyStay</h1>
                                     </div>
                                     <ul className='mt-8 sidebar-list ps-5'>
 
