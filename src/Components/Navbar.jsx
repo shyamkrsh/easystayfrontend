@@ -99,6 +99,7 @@ export default function Navbar() {
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
 
+
     let baseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const onSubmit = (data) => {
@@ -279,7 +280,7 @@ export default function Navbar() {
                     >
                         {/* <MenuIcon/> */}
 
-                        <div className="drawer z-20">
+                        <div className="drawer z-20 lg:hidden">
                             <input id="my-drawer" type="checkbox" className="drawer-toggle" />
                             <div className="drawer-content ">
                                 <label htmlFor="my-drawer" className=" drawer-button ">
@@ -287,13 +288,13 @@ export default function Navbar() {
 
                                 </label>
                             </div>
-                            <div className="drawer-side">
+                            <div className="drawer-side ">
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
                                 <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
                                     <div className='flex items-center gap-3 ps-3 mt-10'>
                                         <img className='w-[50px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
-                                        <h1 className='text-2xl font-bold'>EasyStay</h1>
+                                        <h1 className='text-2xl font-bold '>EasyStay</h1>
                                     </div>
                                     <ul className='mt-8 sidebar-list ps-5'>
 
@@ -325,15 +326,16 @@ export default function Navbar() {
                         noWrap
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
+                        
                     >
                         {/* Logo goes here */}
-                        <h1 className='text-2xl font-bold'>EasyStay</h1>
+                        <h1 className='text-2xl font-bold me-[8rem] hidden lg:block'>EasyStay</h1>
                     </Typography>
 
 
                     <Link to={`/listings/search/${"hostel"}`}>
-                        <Search className='hidden md:block'>
-                            <form method="get" action="/search" className='md:w-[400px]'>
+                        <Search className='hidden lg:block'>
+                            <form method="get" action="/search" className='w-[400px] '>
                                 <SearchIconWrapper>
                                     <SearchIcon />
                                 </SearchIconWrapper>
@@ -347,7 +349,26 @@ export default function Navbar() {
 
                     <Box sx={{ flexGrow: 1 }} />
 
-                    <div className='md:hidden' onClick={() => navigate(`/listings/search/${"hostel"}`)}>
+                    <div className='list-none gap-5 hidden lg:flex '>
+                        <Link to="/"><li className='font-semibold'> Home</li></Link>
+                        <div className={user && user._id ? 'flex gap-5': 'hidden'}>
+                            <Link to={user && user?._id ? "/dashboard" : '/'}><li className='font-semibold'>Dashboard</li></Link>
+
+                            <Link to={user && user?._id ? "/listings/new" : '/'}><li className='font-semibold'>Post services</li></Link>
+
+                        </div>
+                        <Link to="/about" ><li className='font-semibold'> About Us</li></Link>
+                        <Link to="/contact" ><li className='font-semibold'> Contact Us</li></Link>
+                    </div>
+
+
+
+
+
+
+
+
+                    <div className='lg:hidden' onClick={() => navigate(`/listings/search/${"hostel"}`)}>
                         <SearchIcon />
                     </div>
 

@@ -13,11 +13,22 @@ import banner6 from '../../assets/images/banner6.jpg'
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 
 function Hero() {
 
+    const bottomDivRef = useRef(null);
 
+    const scrollToBottom = () => {
+        if (bottomDivRef.current) {
+            bottomDivRef.current.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
+    const user = useSelector((state) => state.user.use);
+    const navigate = useNavigate();
     let sliderRef = useRef(null);
     const settings = {
         dots: true,
@@ -39,7 +50,9 @@ function Hero() {
                                 <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Welcome to Easy Stay</h1>
                                 <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can search for the houses, hostels, resturants, hostels, etc.</p>
                                 <div className="">
-                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105"
+                                        onClick={() => scrollToBottom()}
+                                    >Explore Services </button>
                                 </div>
                             </div>
                         </div>
@@ -52,7 +65,7 @@ function Hero() {
                             <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Search your Choice here</h1>
                             <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can search for the houses, hostels, resturants, hostels, etc.</p>
                             <div className="">
-                                <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105" onClick={() => navigate("/listings/search/hostel")}>Search Services </button>
                             </div>
                         </div>
                     </div>
@@ -65,7 +78,7 @@ function Hero() {
                                 <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Post Your House, hostels Online</h1>
                                 <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can post you houses, hostels, to get room seekers.</p>
                                 <div className="">
-                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105" onClick={() => navigate(user && user._id ? "/listings/new" : "/")}>Post Services </button>
                                 </div>
                             </div>
                         </div>
@@ -79,7 +92,7 @@ function Hero() {
                                 <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Connect with us</h1>
                                 <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can connect with us and and help us grow our services.</p>
                                 <div className="">
-                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105" onClick={() => navigate("/contact")}>Connect with Us </button>
                                 </div>
                             </div>
                         </div>
@@ -93,7 +106,7 @@ function Hero() {
                                 <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Get five Start Hostels</h1>
                                 <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can search for the houses, hostels, resturants, hostels, etc.</p>
                                 <div className="">
-                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105" onClick={() => navigate("/listings/search/hostel")}>Explore Hostels </button>
                                 </div>
                             </div>
                         </div>
@@ -107,7 +120,7 @@ function Hero() {
                                 <h1 className="text-xl md:text-[3rem] font-bold text-slate-200 w-[90vw] ">Payment for services</h1>
                                 <p className="text-sm md:text-xl font-semibold text-gray-400 md:mt-5">Here you can securly payment for the houses, hostels, resturants, hostels, etc.</p>
                                 <div className="">
-                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105">Explore Services </button>
+                                    <button className="bg-primary px-4 py-2 border-none rounded text-white gap-1 mt-5 md:text-xl font-semibold  self-center hover:opacity-90 transition-all hover:scale-x-105" onClick={() => navigate("/")}>Explore Payments </button>
                                 </div>
                             </div>
                         </div>

@@ -10,7 +10,7 @@ function AboutNav() {
                 <Link onClick={() => window.history.back()} > <IoArrowBack className='text-3xl ' /></Link>
             </div>
             <div>
-                <h2 className='text-2xl '>𝑪𝒐𝒏𝒕𝒂𝒄𝒕 𝑼𝒔</h2>
+            <h2 className='text-2xl font-semibold'>Contact Us</h2>
             </div>
         </div>
     )
