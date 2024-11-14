@@ -55,7 +55,7 @@ function NewListingForm() {
         <h2 className='text-xl font-semibold'>Online your services</h2>
       </div>
 
-      <div className='w-[100%] mt-28 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md'>
+      <div className='w-[100%] mt-36 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md'>
         <h1 className='text-2xl font-semibold text-center'>Online Form</h1>
         <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
