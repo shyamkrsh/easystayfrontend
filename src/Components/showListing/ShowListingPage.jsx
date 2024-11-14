@@ -14,6 +14,7 @@ import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux'
 import { toast } from 'react-hot-toast'
+import SearchNavbar from '../SearchNavbar'
 
 
 function ShowListingPage() {
@@ -54,7 +55,7 @@ function ShowListingPage() {
 
   return (
     <>
-      <ShowListingNav />
+      <SearchNavbar/>
       <div className='mt-20 '>
         <ShowSlides
         img1={listingData ? listingData?.images[0].url : ""} img2={listingData ? listingData?.images[1].url : ""}

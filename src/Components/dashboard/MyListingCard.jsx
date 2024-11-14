@@ -33,7 +33,7 @@ function MyListingCard({ image, title, price, description, street_address }) {
 
 
 
-        <div className="card bg-base-100 shadow-xl mx-2 md:mx-2 mb-3 md:mb-5 md:hover:scale-105 transition-all cursor-pointer overflow-hidden z-5">
+        <div className="h-[35rem] border card bg-base-100 shadow-xl mx-2 md:mx-2 mb-3 md:mb-5 md:hover:scale-105 transition-all cursor-pointer overflow-hidden z-5">
             <div className="slider-container">
                 <Slider ref={slider => (sliderRef = slider)} {...settings}>
                     {
