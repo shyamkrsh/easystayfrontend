@@ -21,25 +21,25 @@ const itemIcons = [
         image: hotel,
         title: "Hotels",
         link: `/listings/search/${"hotel"}`,
-        content: 'Here you can search for Hostel related services',
+        content: 'Here you can search for Hotels related services',
     },
     {
         image: resturant,
         title: "Resturants",
         link: `/listings/search/${"resturant"}`,
-        content: 'Here you can search for Hostel related services',
+        content: 'Here you can search for Resturants related services',
     },
     {
         image: flowerPark,
         title: "Parks",
         link: `/listings/search/${"park"}`,
-        content: 'Here you can search for Hostel related services',
+        content: 'Here you can search for Parks related services',
     },
     {
         image: swimmingPool,
         title: "Swimming Pools",
         link: `/listings/search/${"swimmingPool"}`,
-        content: 'Here you can search for Hostel related services',
+        content: 'Here you can search for Swimming Pools related services',
     },
     // {
     //     image: boysHostel,
@@ -57,7 +57,7 @@ const itemIcons = [
         image: roomsForRent,
         title: "Rooms For Rent",
         link: `/listings/search/${"roomForRent"}`,
-        content: 'Here you can search for Hostel related services',
+        content: 'Here you can search for Rooms For Rent related services',
     }
 ]
 

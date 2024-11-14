@@ -2,6 +2,7 @@ import React from 'react'
 import Navbar from '../Navbar'
 import Hero from './Hero'
 import ItemsIcon from './ItemsIcon'
+import PeopleSays from './PeopleSays'
 
 import Footer from '../Footer'
 import BottomAppBar from '../Bottombar'
@@ -34,6 +35,7 @@ function HomePage() {
       <div className='mt-16'>
         <Hero />
         <ItemsIcon />
+        <PeopleSays/>
       </div>
       <div className=''>
         <Footer />

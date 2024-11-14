@@ -5,6 +5,7 @@ import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import { IoArrowBack } from "react-icons/io5";
 import axios from 'axios'
+import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 
 import { useSelector } from 'react-redux';
 import { toast } from 'react-hot-toast';
@@ -27,7 +28,7 @@ function NewListingForm() {
     images.forEach((image) => {
       formData.append('images', image);
     });
-    
+
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
@@ -49,13 +50,13 @@ function NewListingForm() {
   return (
 
     <>
-      <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-5 fixed top-0 z-10'>
+      <div className='bg-blue-500 text-white flex flex-start gap-5 w-[100%] px-5 py-3 fixed top-0 z-10'>
         <Link to="/"><IoArrowBack className='text-2xl font-extrabold' /></Link>
         <h2 className='text-xl font-semibold'>Online your services</h2>
       </div>
 
-      <div className='w-[100%] mt-12 md:mt-28 p-10 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
-        <h1 className='text-2xl font-semibold text-center mt-16'>Online Form</h1>
+      <div className='w-[100%] mt-28 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md'>
+        <h1 className='text-2xl font-semibold text-center'>Online Form</h1>
         <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
           {/* image input completed */}
@@ -111,7 +112,7 @@ function NewListingForm() {
           <div className='mt-5'>
             <TextField
               id="price"
-              label='Enter price'
+              label='Enter price in rupee'
               type="text"
               autoComplete="current-price"
               className='w-full'
@@ -121,43 +122,53 @@ function NewListingForm() {
           </div>
 
           <div className='mt-5 flex items-center justify-between'>
-            <div className=''>
+            <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
+              <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image1'
                 name='images[image1]'
-                className='w-[150px] md:w-[200px]'
+                className='w-[120px] md:w-[200px] opacity-0'
                 onChange={(e) => setImage1(e?.target?.files[0])}
               />
+              <p className='text-center mt-2'>{image1?.name}</p>
             </div>
-            <div className=''>
+
+            <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
+              <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image2'
                 name='images[image2]'
-                className='w-[150px] md:w-[200px]'
+                className='w-[120px] md:w-[200px] opacity-0'
                 onChange={(e) => setImage2(e?.target?.files[0])}
               />
+              <p className='text-center mt-2'>{image2?.name}</p>
             </div>
+
           </div>
           <div className='mt-5 flex items-center justify-between'>
-            <div className=''>
+          <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
+          <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image3'
                 name='images[image3]'
-                className='w-[150px] md:w-[200px]'
+                className='w-[120px] md:w-[200px] opacity-0'
                 onChange={(e) => setImage3(e?.target?.files[0])}
               />
+              <p className='text-center mt-2'>{image3?.name}</p>
             </div>
-            <div className=''>
+            <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
+            <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image4'
                 name='images[image4]'
-                className='w-[150px] md:w-[200px]'
+                className='w-[120px] md:w-[200px] opacity-0'
                 onChange={(e) => setImage4(e?.target?.files[0])}
               />
+              <p className='text-center mt-2'>{image4?.name}</p>
             </div>
           </div>
 
@@ -193,7 +204,6 @@ function NewListingForm() {
             </Button>
 
           </div>
-
 
         </form>
 
