@@ -9,16 +9,15 @@ import { toast } from 'react-hot-toast';
 function CreateReviews({ id }) {
   const [value, setValue] = React.useState(1);
 
-
+  let baseUrl = import.meta.env.VITE_API_BASE_URL;
   const { register, handleSubmit, reset, formState: { errors } } = useForm();
   const onSubmit = (data) => {
-    console.log(data)
-    axios.post(`https://easystaybackend.vercel.app/api/reviews/${id}/new`, {
-      
+    axios.post(`${baseUrl}/api/reviews/${id}/new`, {
       content: data.content,
       rating: value,
     },
     {
+      headers: { 'Content-Type': 'application/json' },
       withCredentials: true,
     }
   ).then((res) => {

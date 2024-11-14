@@ -35,7 +35,8 @@ import { setUserDetails } from '../store/userSlice.jsx';
 import { MdDashboard } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
-import { logout } from '../store/userSlice.jsx'
+import { useEffect } from 'react';
+
 
 
 // all module imported above
@@ -98,16 +99,17 @@ export default function Navbar() {
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
 
-
+    let baseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const onSubmit = (data) => {
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/login`, data, {
+
+        axios.post(`${baseUrl}/api/login`, data, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
             }
         }).then((res) => {
-
+            console.log("Login", user)
             if (res.data.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
@@ -130,15 +132,15 @@ export default function Navbar() {
 
 
     const handleLogout = () => {
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
-            withCredentials: true,
-        }).then((res) => {
+        axios.post(`${baseUrl}/api/logout`,{},{withCredentials: true}).then((res) => {
             if (res.data.success) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
                 })
-                dispatch(logout());
-                window.location.href = "/"
+                dispatch(setUserDetails(null))
+                setTimeout(() => {
+                    window.location.href = "/"
+                }, 500);
             } else {
                 toast.error(res.data.message, {
                     position: 'top-right'
@@ -151,6 +153,8 @@ export default function Navbar() {
             })
         })
     }
+
+  
 
     const handleProfileMenuOpen = (event) => {
         setAnchorEl(event.currentTarget);

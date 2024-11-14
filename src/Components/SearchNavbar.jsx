@@ -36,7 +36,7 @@ import { setUserDetails } from '../store/userSlice';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-import {logout} from '../store/userSlice'
+
 
 
 
@@ -131,8 +131,11 @@ export default function SearchNavbar({ search, setSearch }) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
                 })
-                dispatch(logout());
-                window.location.href = "/"
+                dispatch(setUserDetails(null))
+               
+                setTimeout(() => {
+                    window.location.href = "/"
+                }, 500);
             } else {
                 toast.error(res.data.message, {
                     position: 'top-right'
