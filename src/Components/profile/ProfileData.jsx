@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 
 function ProfileData() {
     const user = useSelector((state) => state.user.user);
-    console.log(user)
+    
     return (
         <>
             <div className='mx-auto'>
