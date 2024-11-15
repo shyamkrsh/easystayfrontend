@@ -19,6 +19,7 @@ import AboutPage from './Components/about/AboutPage.jsx'
 import ContactPage from './Components/contact/ContactPage.jsx'
 import ProfilePage from './Components/profile/ProfilePage.jsx'
 import PageNotFound from './PageNotFound.jsx'
+import EditListingForm from './Components/showListing/EditListingForm.jsx'
 
 function App() {
   const dispatch = useDispatch();
@@ -62,6 +63,7 @@ function App() {
             <Route path='/about' element={<AboutPage />} />
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/profile' element={<ProfilePage />} />
+            <Route path='/edit/:id' element={<EditListingForm />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </BrowserRouter>

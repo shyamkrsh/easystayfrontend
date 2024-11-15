@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
@@ -12,8 +12,11 @@ import { toast } from 'react-hot-toast';
 
 
 
-function NewListingForm() {
+function EditListingForm() {
+
   let baseUrl = import.meta.env.VITE_API_BASE_URL;
+
+  const { id } = useParams();
 
   const user = useSelector((state) => state.user.user);
   const [image1, setImage1] = useState();
@@ -33,11 +36,11 @@ function NewListingForm() {
     Object.keys(data).forEach((key) => {
       formData.append(key, data[key]);
     });
-    axios.post(`${baseUrl}/api/listings/new`, formData, {
+    axios.patch(`${baseUrl}/api/listings/edit/${id}`, formData, {
       withCredentials: true,
     }).then((res) => {
       if (res.data.success) {
-        toast.success("New Place added", {
+        toast.success("Place Updated", {
           position: 'top-right'
         });
       }else{
@@ -74,13 +77,13 @@ function NewListingForm() {
               type="text"
               autoComplete="current-name"
               className='w-full'
-              {...register("title", { required: true })}
+              {...register("title", { required: false })}
             />
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
             <select id='category' name='category' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
-              {...register("category", { required: true })}
+              {...register("category", { required: false })}
             >
               <option value="" >Select Category</option>
               <option value="hostel" >Hostel</option>
@@ -101,13 +104,13 @@ function NewListingForm() {
               type="text"
               autoComplete="current-location"
               className='w-full'
-              {...register("location", { required: true })}
+              {...register("location", { required: false })}
             />
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
             <select id='category' name='availability' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
-              {...register("availability", { required: true })}
+              {...register("availability", { required: false })}
             >
               <option value="">Select Availability</option>
               <option value="available" >Available</option>
@@ -123,7 +126,7 @@ function NewListingForm() {
               type="text"
               autoComplete="current-price"
               className='w-full'
-              {...register("price", { required: true })}
+              {...register("price", { required: false })}
             />
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
@@ -182,7 +185,7 @@ function NewListingForm() {
 
           <div className='mt-5'>
             <select id='payment' name='payment' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
-              {...register("payment", { required: true })}
+              {...register("payment", { required: false })}
             >
               <option value="">Select Payment Status</option>
               <option value="pending" >Pending</option>
@@ -198,7 +201,7 @@ function NewListingForm() {
               multiline
               autoComplete="current-description"
               className='w-full'
-              {...register("description", { required: true })}
+              {...register("description", { required: false })}
             />
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
@@ -219,4 +222,4 @@ function NewListingForm() {
   )
 }
 
-export default NewListingForm
+export default EditListingForm

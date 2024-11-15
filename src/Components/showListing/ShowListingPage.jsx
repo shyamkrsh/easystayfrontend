@@ -15,9 +15,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux'
 import { toast } from 'react-hot-toast'
 import SearchNavbar from '../SearchNavbar'
+import {Link} from 'react-router-dom'
 
 
 function ShowListingPage() {
+
+  let baseUlr = import.meta.env.VITE_API_BASE_URL;
+
   const { id } = useParams();
   const [listingData, setListingData] = useState(null);
   const [owner, setOwner] = useState(null);
@@ -26,7 +30,7 @@ function ShowListingPage() {
 
   useEffect(() => {
     try {
-      axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/listings/${id}/show`).then((res) => {
+      axios.get(`${baseUlr}/api/listings/${id}/show`).then((res) => {
         setOwner(res.data.owner);
         setListingData(res.data.data);
       }).catch((err) => {
@@ -44,7 +48,7 @@ function ShowListingPage() {
   }
 
   const handleDeleteListing = () => {
-    axios.delete(`${import.meta.env.VITE_API_BASE_URL}/api/listings/${id}/delete`).then((res) =>{
+    axios.delete(`${baseUlr}/api/listings/${id}/delete`).then((res) =>{
       toast.success("Your post has been deleted");
       navigate("/dashboard");
     }).catch((err) => {
@@ -65,7 +69,7 @@ function ShowListingPage() {
 
       <div className={owner?._id == user?._id ? "flex items-center justify-center gap-10 md:gap-32 md:mt-5 p-3 mt-3" : "hidden"}>
         <Fab color="secondary" aria-label="edit" onClick={handleEditListing} className='z-0' style={{zIndex: "0"}}>
-          <EditIcon className="text-xl " />
+          <Link to={`/edit/${id}`}><EditIcon className="text-xl " /></Link>
         </Fab>
         <Button variant="outlined" startIcon={<DeleteIcon />} className="h-[2.5rem]" onClick={handleDeleteListing}>
           Delete
