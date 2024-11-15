@@ -10,7 +10,7 @@ function ShowListingNav() {
                 <Link onClick={() => window.history.back()}  > <IoArrowBack className='text-3xl ' /></Link>
             </div>
             <div>
-                <h2 className='text-2xl '>𝑵𝒐𝒕𝒊𝒇𝒊𝒄𝒂𝒕𝒊𝒐𝒏𝒔</h2>
+                <h2 className='text-2xl font-semibold'>Notifications</h2>
             </div>
             
         </div>

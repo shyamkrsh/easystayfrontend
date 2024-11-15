@@ -39,6 +39,7 @@ function EditListingForm() {
     axios.patch(`${baseUrl}/api/listings/edit/${id}`, formData, {
       withCredentials: true,
     }).then((res) => {
+      console.log(res)
       if (res.data.success) {
         toast.success("Place Updated", {
           position: 'top-right'
