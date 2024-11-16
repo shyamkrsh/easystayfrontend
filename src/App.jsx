@@ -20,6 +20,7 @@ import ContactPage from './Components/contact/ContactPage.jsx'
 import ProfilePage from './Components/profile/ProfilePage.jsx'
 import PageNotFound from './PageNotFound.jsx'
 import EditListingForm from './Components/showListing/EditListingForm.jsx'
+import ForgetPassword from './ForgetPassword.jsx'
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,7 @@ function App() {
             <Route path='/' element={<HomePage />} />
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/forgetPassword' element={<ForgetPassword />} />
             <Route path='/listings/search/:category' element={<Listings />} />
             <Route path='/listings/new' element={<NewListingForm />} />
             <Route path='/listings/show/:id' element={<ShowListingPage />} />

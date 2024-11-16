@@ -416,7 +416,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                     Login
                                 </Button>
                                 <div className='flex items-center justify-between md:mt-3 md:mb-3'>
-                                    <p className='text-center mt-5'><Link to={"/signup"} className='underline text-blue-600 text-xs md:text-xl'>Forgot password</Link></p>
+                                    <p className='text-center mt-5'><Link to={"/forgetPassword"} className='underline text-blue-600 text-xs md:text-xl'>Forgot password</Link></p>
                                     <p className='text-center text-xs md:text-xl mt-5'>Create an account <Link to="/signup" className='underline text-blue-600'
                                         onClick={() => document.getElementById('my_modal_3').hideModal()}
                                     >Signup</Link></p>

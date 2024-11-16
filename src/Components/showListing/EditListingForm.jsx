@@ -24,6 +24,7 @@ function EditListingForm() {
   useEffect(() => {
     try {
       axios.get(`${baseUrl}/api/listings/${id}/show`).then((res) => {
+        console.log(res.data.data)
         setListingData(res.data.data);
       }).catch((err) => {
         console.log(err);
@@ -32,6 +33,8 @@ function EditListingForm() {
       console.log(err);
     }
   }, [])
+
+
 
   const user = useSelector((state) => state.user.user);
   const [image1, setImage1] = useState();
@@ -93,7 +96,7 @@ function EditListingForm() {
                 type="text"
                 autoComplete="current-name"
                 className="w-full"
-                defaultValue={listingData.title}
+                defaultValue={listingData?.title}
                 {...register("title", { required: false })}
               />
             )}
@@ -162,10 +165,11 @@ function EditListingForm() {
                 type="file"
                 id='image1'
                 name='images[image1]'
-                className='w-[120px] md:w-[200px] opacity-0'
+                className='w-[120px] lg:w-[200px] opacity-0'
+                defaultValue={listingData?.images[0]?.url}
                 onChange={(e) => setImage1(e?.target?.files[0])}
               />
-              <p className='text-center mt-2'>{image1?.name}</p>
+              <p className='text-center mt-2'>{listingData?.images[0]?.filename?.slice(0, 10) + "..."}</p>
             </div>
 
             <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
@@ -174,10 +178,11 @@ function EditListingForm() {
                 type="file"
                 id='image2'
                 name='images[image2]'
-                className='w-[120px] md:w-[200px] opacity-0'
+                className='w-[120px] lg:w-[200px] opacity-0'
+                defaultValue={listingData?.images[1]?.url}
                 onChange={(e) => setImage2(e?.target?.files[0])}
               />
-              <p className='text-center mt-2'>{image2?.name}</p>
+              <p className='text-center mt-2'>{listingData?.images[1]?.filename?.slice(0, 10) + "..."}</p>
             </div>
 
           </div>
@@ -188,10 +193,11 @@ function EditListingForm() {
                 type="file"
                 id='image3'
                 name='images[image3]'
-                className='w-[120px] md:w-[200px] opacity-0'
+                className='w-[120px] lg:w-[200px] opacity-0'
+                defaultValue={listingData?.images[2]?.url}
                 onChange={(e) => setImage3(e?.target?.files[0])}
               />
-              <p className='text-center mt-2'>{image3?.name}</p>
+              <p className='text-center mt-2'>{listingData?.images[2]?.filename?.slice(0, 10) + "..."}</p>
             </div>
             <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
               <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
@@ -199,10 +205,11 @@ function EditListingForm() {
                 type="file"
                 id='image4'
                 name='images[image4]'
-                className='w-[120px] md:w-[200px] opacity-0'
+                className='w-[120px] lg:w-[200px] opacity-0'
+                defaultValue={listingData?.images[3]?.url}
                 onChange={(e) => setImage4(e?.target?.files[0])}
               />
-              <p className='text-center mt-2'>{image4?.name}</p>
+              <p className='text-center mt-2'>{listingData?.images[3]?.filename?.slice(0, 10) + "..."}</p>
             </div>
           </div>
 

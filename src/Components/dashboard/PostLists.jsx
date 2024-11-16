@@ -30,7 +30,7 @@ function Listings() {
         <Loader />
       </div>
 
-      <div className='mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mb-24'>
+      <div className='mt-8 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 mb-24 overflow-scroll'>
 
         {
           listings?.map((item) => (
@@ -42,14 +42,12 @@ function Listings() {
           ))
         }
 
-        
-         
       </div>
           <div className='w-[100%] flex items-center justify-center'>
-            <h1 className={listings ? 'text-center font-bold mt-16 text-2xl' : "hidden"}>No Such Post Available</h1>
+            <h1 className={listings ? 'hidden' : "text-center font-bold mt-16 text-2xl block"}>No Such Post Available</h1>
           </div>
-      <div className='w-full text-center m-10'>
-
+      <div className='w-full text-center m-[20rem]'>
+        
       </div>
     </>
   )

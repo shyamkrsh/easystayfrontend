@@ -107,14 +107,25 @@ export default function DashboardNav({search, setSearch}) {
     };
 
     const handleLogout = () => {
-        axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
-            withCredentials: true,
-        }).then((res) => {
-            console.log(res.data);
-            dispatch(setUserDetails(null));
-            window.location.href = "/"
+        axios.post(`${baseUrl}/api/logout`, {}, { withCredentials: true }).then((res) => {
+            if (res.data.success) {
+                toast.success("Logout successfully", {
+                    position: 'top-right'
+                })
+                dispatch(setUserDetails(null))
+                setTimeout(() => {
+                    window.location.href = "/"
+                }, 500);
+            } else {
+                toast.error(res.data.message, {
+                    position: 'top-right'
+                })
+            }
+
         }).catch((err) => {
-            console.log(err);
+            toast.error(err.message, {
+                position: 'top-right'
+            })
         })
     }
 
