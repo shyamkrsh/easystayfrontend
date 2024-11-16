@@ -14,22 +14,24 @@ import toast from 'react-hot-toast';
 
 function ForgetPassword() {
 
-    const [count, setCount] = useState(10);
+    const [count, setCount] = useState(60);
+    const [sentOtp, setSentOtp] = useState(false);
 
-    useEffect(() => {
+    let handleCount = () => {
         const interval = setInterval(() => {
             setCount((prevCount) => {
                 if (prevCount > 0) {
-                    return prevCount - 1; 
+                    return prevCount - 1;
                 } else {
-                    clearInterval(interval); 
-                    return prevCount; 
+                    clearInterval(interval);
+                    return prevCount;
                 }
             }
             );
         }, 1000)
         return () => clearInterval(interval);
-    }, [])
+    }
+
 
 
     const navigate = useNavigate();
@@ -40,10 +42,13 @@ function ForgetPassword() {
 
 
     const onSubmit = (data) => {
+        console.log(data)
+        handleCount();
         axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/forgetPassword`, data, {
             withCredentials: true,
         }).then((res) => {
             if (res?.data?.success) {
+                setSentOtp(true)
                 toast.success("OTP Send successfully", {
                     position: 'top-right'
                 });
@@ -71,12 +76,12 @@ function ForgetPassword() {
                 <h2 className='text-xl font-semibold'>Login to your Account</h2>
             </div>
 
-            <div className="w-[100%] mt-0 md:mt-8 p-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
+            <div className="w-[100%] shadow-md mt-0 md:mt-8 p-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 
 
                 <h3 className="font-bold text-xl mb-5">Forget Password</h3>
                 <form onSubmit={handleSubmit(onSubmit)} >
-                    <div className='mt-5 md:mt-3'>
+                    <div className={'mt-5 md:mt-3'}>
                         <TextField
                             id="1"
                             label='Enter your email'
@@ -89,14 +94,51 @@ function ForgetPassword() {
                         {errors.name && <span className='text-red-600'>Please fill this field</span>}
                     </div>
 
-                    <div className='flex flex-col mt-5'>
+                    <div className={sentOtp == true ? 'mt-5 md:mt-3 block': 'hidden'}>
+                        <TextField
+                            id="1"
+                            label='Enter OTP'
+                            type="number"
+                            autoComplete="current-otp"
+                            className='w-full'
+
+                            {...register("otp", { required: true })}
+                        />
+                        {errors.name && <span className='text-red-600'>Please fill this field</span>}
+                    </div>
+                    <div className={sentOtp == true ? 'mt-5 md:mt-3 block': 'hidden'}>
+                        <TextField
+                            id="1"
+                            label='Enter your new password'
+                            type="password"
+                            autoComplete="current-password"
+                            className='w-full'
+
+                            {...register("newpassword", { required: true })}
+                        />
+                        {errors.name && <span className='text-red-600'>Please fill this field</span>}
+                    </div>
+
+
+
+                    <div className={sentOtp == true ? 'flex flex-col mt-5' : 'hidden'}>
                         <Button variant="contained" type='submit'>
-                            Sent OTP
+                            Submit
                         </Button>
                     </div>
                     <div className='flex items-center justify-between px-10 mt-5'>
-                        <p className='text-primary'>{count}</p>
-                        <p className='text-slate-700 font-semibold cursor-pointer'>Resend OTP</p>
+                        <p className={sentOtp == true ? 'text-primary' : "hidden"}>{sentOtp == true ? count : ""}</p>
+
+                        {
+                            sentOtp == true ?
+                                <p className={count == 0 ? 'text-blue-600 font-semibold cursor-pointer' : 'text-slate-700-600 font-semibold '}>
+                                    {sentOtp == false ? "Send OTP" : "Resend OTP"}</p>
+                                :
+                                <Button variant="contained" type='submit'>
+                                    Send verification OTP
+                                </Button>
+                        }
+
                     </div>
                 </form>
 

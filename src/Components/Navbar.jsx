@@ -110,7 +110,7 @@ export default function Navbar() {
                 'Content-Type': 'application/json',
             }
         }).then((res) => {
-            console.log("Login", user)
+            
             if (res.data.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
