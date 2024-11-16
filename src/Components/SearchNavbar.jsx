@@ -196,6 +196,7 @@ export default function SearchNavbar({ search, setSearch }) {
         >
             <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
             <MenuItem onClick={() => navigate("/dashboard")}>My Dashboard</MenuItem>
+            <MenuItem onClick={() => navigate("/listings/new")}>Post services</MenuItem>
             <MenuItem onClick={handleLogout} >Logout</MenuItem>
         </Menu>
     );
@@ -263,7 +264,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "1" }}>
+            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "10" }}>
 
                 <Toolbar>
                     <IconButton
@@ -280,7 +281,7 @@ export default function SearchNavbar({ search, setSearch }) {
                             <div className="drawer-content ">
 
                                 {/* Back Icon goes here */}
-                                <Link onClick={() => window.history.back()} ><IoArrowBack /></Link>
+                                <button onClick={() => window.history.back()} ><IoArrowBack /></button>
 
                             </div>
                             

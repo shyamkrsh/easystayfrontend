@@ -194,7 +194,7 @@ export default function Navbar() {
         >
             <MenuItem onClick={() => navigate("/profile")}>Profile</MenuItem>
             <MenuItem onClick={() => navigate("/dashboard")}>My Dashboard</MenuItem>
-            <MenuItem onClick={() => navigate("/listings/new")}>Post your Item</MenuItem>
+            <MenuItem onClick={() => navigate("/listings/new")}>Post services</MenuItem>
             <MenuItem onClick={handleLogout}>Logout</MenuItem>
         </Menu>
     );
@@ -301,7 +301,7 @@ export default function Navbar() {
                                         <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
                                         <Link to={user && user?._id ? "/dashboard" : '/'}><li><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
 
-                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li><AddIcon id='sidebar-icon' />Post you Item</li></Link>
+                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li><AddIcon id='sidebar-icon' />Post services</li></Link>
 
                                         <Link to="/about" ><li><FcAbout id='sidebar-icon' /> About Us</li></Link>
                                         <Link to="/contact" ><li><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>

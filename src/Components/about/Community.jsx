@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import Slider from "react-slick";
 import shyam from '../../assets/images/shyam.jpg'
 
-function PeopleSays() {
+function Community() {
     let sliderRef = useRef(null);
     const settings = {
         dots: true,
@@ -31,7 +31,7 @@ function PeopleSays() {
 
     return (
         <>
-            <h1 className="text-[2rem] md:text-[3rem] font-bold text-center mt-8">People Says</h1>
+            <h1 className="text-[2rem] md:text-[3rem] font-bold text-center mt-8">Our Community</h1>
             <div className="slider-container mt-12 mb-8">
                 <Slider ref={slider => (sliderRef = slider)} {...settings}>
 
@@ -66,4 +66,4 @@ function PeopleSays() {
     )
 }
 
-export default PeopleSays;
+export default Community;

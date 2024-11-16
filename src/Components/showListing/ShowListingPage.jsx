@@ -20,7 +20,7 @@ import {Link} from 'react-router-dom'
 
 function ShowListingPage() {
 
-  let baseUlr = import.meta.env.VITE_API_BASE_URL;
+  let baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const { id } = useParams();
   const [listingData, setListingData] = useState(null);
@@ -30,7 +30,7 @@ function ShowListingPage() {
 
   useEffect(() => {
     try {
-      axios.get(`${baseUlr}/api/listings/${id}/show`).then((res) => {
+      axios.get(`${baseUrl}/api/listings/${id}/show`).then((res) => {
         setOwner(res.data.owner);
         setListingData(res.data.data);
       }).catch((err) => {
@@ -48,7 +48,7 @@ function ShowListingPage() {
   }
 
   const handleDeleteListing = () => {
-    axios.delete(`${baseUlr}/api/listings/${id}/delete`).then((res) =>{
+    axios.delete(`${baseUrl}/api/listings/${id}/delete`).then((res) =>{
       toast.success("Your post has been deleted");
       navigate("/dashboard");
     }).catch((err) => {

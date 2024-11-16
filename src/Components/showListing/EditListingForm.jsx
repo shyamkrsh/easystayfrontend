@@ -17,6 +17,21 @@ function EditListingForm() {
   let baseUrl = import.meta.env.VITE_API_BASE_URL;
 
   const { id } = useParams();
+  const [listingData, setListingData] = useState(null);
+
+
+
+  useEffect(() => {
+    try {
+      axios.get(`${baseUrl}/api/listings/${id}/show`).then((res) => {
+        setListingData(res.data.data);
+      }).catch((err) => {
+        console.log(err);
+      })
+    } catch (err) {
+      console.log(err);
+    }
+  }, [])
 
   const user = useSelector((state) => state.user.user);
   const [image1, setImage1] = useState();
@@ -39,12 +54,11 @@ function EditListingForm() {
     axios.patch(`${baseUrl}/api/listings/edit/${id}`, formData, {
       withCredentials: true,
     }).then((res) => {
-      console.log(res)
       if (res.data.success) {
         toast.success("Place Updated", {
           position: 'top-right'
         });
-      }else{
+      } else {
         toast.error(res.data.message, {
           position: 'top-right'
         });
@@ -62,31 +76,34 @@ function EditListingForm() {
 
     <>
       <div className='bg-blue-500 text-white flex flex-start gap-5 w-[100%] px-5 py-3 fixed top-0 z-10'>
-        <Link to="/"><IoArrowBack className='text-2xl font-extrabold' /></Link>
+        <button onClick={() => window.history.back()}><IoArrowBack className='text-2xl font-extrabold' /></button>
         <h2 className='text-xl font-semibold'>Online your services</h2>
       </div>
 
       <div className='w-[100%] mt-36 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md'>
-        <h1 className='text-2xl font-semibold text-center'>Online Form</h1>
+        <h1 className='text-2xl font-semibold text-center'>Update your service details</h1>
         <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
           {/* image input completed */}
           <div className='mt-5'>
-            <TextField
-              id="title"
-              label='Enter name of the house, hotstel or hotel'
-              type="text"
-              autoComplete="current-name"
-              className='w-full'
-              {...register("title", { required: false })}
-            />
+            {listingData && (
+              <TextField
+                id="title"
+                label="Change name of the house, hostel or hotel"
+                type="text"
+                autoComplete="current-name"
+                className="w-full"
+                defaultValue={listingData.title}
+                {...register("title", { required: false })}
+              />
+            )}
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
             <select id='category' name='category' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
               {...register("category", { required: false })}
             >
-              <option value="" >Select Category</option>
+              <option value={listingData?.category}>Select Category</option>
               <option value="hostel" >Hostel</option>
               <option value="hotel" >Hotel</option>
               <option value="resturant" >Resturant</option>
@@ -99,21 +116,24 @@ function EditListingForm() {
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
-            <TextField
-              id="location"
-              label='Enter your location'
-              type="text"
-              autoComplete="current-location"
-              className='w-full'
-              {...register("location", { required: false })}
-            />
+            {listingData && (
+              <TextField
+                id="location"
+                label="Change location"
+                type="text"
+                autoComplete="current-location"
+                className="w-full"
+                defaultValue={listingData.location}
+                {...register("location", { required: false })}
+              />
+            )}
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
             <select id='category' name='availability' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
               {...register("availability", { required: false })}
             >
-              <option value="">Select Availability</option>
+              <option value={listingData?.availability}>Select Availability</option>
               <option value="available" >Available</option>
               <option value="unavailable" >Unavailable</option>
             </select>
@@ -121,14 +141,17 @@ function EditListingForm() {
           </div>
 
           <div className='mt-5'>
-            <TextField
-              id="price"
-              label='Enter price in rupee'
-              type="text"
-              autoComplete="current-price"
-              className='w-full'
-              {...register("price", { required: false })}
-            />
+            {listingData && (
+              <TextField
+                id="price"
+                label='Change price in rupee'
+                type="text"
+                autoComplete="current-price"
+                className='w-full'
+                defaultValue={listingData.price}
+                {...register("price", { required: false })}
+              />
+            )}
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
 
@@ -159,8 +182,8 @@ function EditListingForm() {
 
           </div>
           <div className='mt-5 flex items-center justify-between'>
-          <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-          <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+            <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
+              <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image3'
@@ -171,7 +194,7 @@ function EditListingForm() {
               <p className='text-center mt-2'>{image3?.name}</p>
             </div>
             <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-            <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+              <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
               <input
                 type="file"
                 id='image4'
@@ -188,22 +211,24 @@ function EditListingForm() {
             <select id='payment' name='payment' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
               {...register("payment", { required: false })}
             >
-              <option value="">Select Payment Status</option>
+              <option value={listingData?.payment}>Select Payment Status</option>
               <option value="pending" >Pending</option>
               <option value="done" >Done</option>
             </select>
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
           <div className='mt-5'>
-            <TextField
-              id="description"
-              label='Write Description'
-              type="text"
-              multiline
-              autoComplete="current-description"
-              className='w-full'
-              {...register("description", { required: false })}
-            />
+            {listingData && (
+              <TextField
+                id="description"
+                type="text"
+                multiline
+                autoComplete="current-description"
+                className='w-full'
+                defaultValue={listingData.description}
+                {...register("description", { required: false })}
+              />
+            )}
             {errors.name && <span className='text-red-600'>Please fill this field</span>}
           </div>
 
