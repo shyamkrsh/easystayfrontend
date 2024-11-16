@@ -248,7 +248,7 @@ export default function SearchNavbar({ search, setSearch }) {
                 >
                     {
                         user && user?.profileImage ? (<div>
-                            <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                            <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] h-[40px] rounded-full border-slate-300 border-2' />
                         </div>)
                             :
                             (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -346,7 +346,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
                             {
                                 user && user?.profileImage ? (<div>
-                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] h-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)
@@ -366,7 +366,7 @@ export default function SearchNavbar({ search, setSearch }) {
                         >
                             {
                                 user && user.profileImage ? (<div>
-                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] rounded-full border-slate-300 border-2' />
+                                    <img src={user?.profileImage || user?.picture} alt="" className='w-[40px] h-[40px] rounded-full border-slate-300 border-2' />
                                 </div>)
                                     :
                                     (<AccountCircle className='text-3xl' style={{ fontSize: "35px" }} />)

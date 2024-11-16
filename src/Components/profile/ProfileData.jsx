@@ -8,7 +8,7 @@ function ProfileData({user}) {
             <div className='mx-auto'>
                 <div className='flex items-center justify-center'>
                     {user && user.profileImage ?
-                    <img src={user?.profileImage} className='w-[35px] md:w-[120px] rounded-full'/>
+                    <img src={user?.profileImage} className='w-[35px] h-[35px] md:w-[120px] rounded-full'/>
                     :
                     <img src="https://i.ibb.co/Pt6K1zh/55f43de2412ad3f18fe90fac70c6472a-removebg-preview.png" className='w-[100px] md:w-[120px] rounded-full'  />
                     }
