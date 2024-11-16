@@ -1,8 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
-function ProfileData() {
-    const user = useSelector((state) => state.user.user);
+function ProfileData({user}) {
+   
     
     return (
         <>
