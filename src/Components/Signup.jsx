@@ -33,7 +33,7 @@ function Signup() {
                 })
             }
 
-            navigate("/");
+            navigate("/login");
         }).catch((err) => {
             toast.error(err.message, {
                 position: 'top-right'

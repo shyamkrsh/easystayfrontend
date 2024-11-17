@@ -53,7 +53,7 @@ function Login() {
 
             <div className="w-[100%] mt-0 md:mt-8 p-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 
-                <img className='mx-auto md:w-[50%]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
+                <img className='mx-auto w-[200px] h-[200px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
                 <h3 className="font-bold text-lg">Login</h3>
                 <form action='/login' onSubmit={handleSubmit(onSubmit)} >
                     <div className='mt-5 md:mt-3'>

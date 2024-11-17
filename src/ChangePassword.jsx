@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
@@ -12,27 +12,9 @@ import toast from 'react-hot-toast';
 
 
 
-function ForgetPassword() {
+function ChangePassword() {
 
-    const [count, setCount] = useState(60);
-    const [sentOtp, setSentOtp] = useState(false);
-
-    let handleCount = () => {
-        const interval = setInterval(() => {
-            setCount((prevCount) => {
-                if (prevCount > 0) {
-                    return prevCount - 1;
-                } else {
-                    clearInterval(interval);
-                    return prevCount;
-                }
-            }
-            );
-        }, 1000)
-        return () => clearInterval(interval);
-    }
-
-
+    let {userId} = useParams();
 
     const navigate = useNavigate();
     const { fetchUserDetails } = useContext(Context);
@@ -40,21 +22,20 @@ function ForgetPassword() {
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
 
-
     const onSubmit = (data) => {
         console.log(data)
         handleCount();
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/forgetPassword`, data, {
+        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/changePassword/${userId}`, data, {
             withCredentials: true,
         }).then((res) => {
             if (res?.data?.success) {
                 setSentOtp(true)
-                toast.success("OTP Send successfully", {
+                toast.success("Password changed successfully", {
                     position: 'top-right'
                 });
 
                 fetchUserDetails();
-                navigate("/")
+                navigate("/login")
             } else {
                 toast.error(res?.data?.message, {
                     position: 'top-right'
@@ -67,19 +48,17 @@ function ForgetPassword() {
         })
     }
 
-
-
     return (
         <>
             <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-3'>
                 <button onClick={() => window.history.back()} ><IoArrowBack className='text-2xl font-extrabold' /></button>
-                <h2 className='text-xl font-semibold'>Forget your password</h2>
+                <h2 className='text-xl font-semibold'>Change your password</h2>
             </div>
 
             <div className="w-[100%] shadow-md mt-0 md:mt-8 p-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]">
 
 
-                <h3 className="font-bold text-xl mb-5">Forget Password</h3>
+                <h3 className="font-bold text-xl mb-5">Change Password</h3>
                 <form onSubmit={handleSubmit(onSubmit)} >
                     <div className={'mt-5 md:mt-3'}>
                         <TextField
@@ -94,19 +73,19 @@ function ForgetPassword() {
                         {errors.name && <span className='text-red-600'>Please fill this field</span>}
                     </div>
 
-                    <div className={sentOtp == true ? 'mt-5 md:mt-3 block': 'hidden'}>
+                    <div className={'mt-5 md:mt-3 block'}>
                         <TextField
                             id="1"
-                            label='Enter OTP'
+                            label='Enter old password'
                             type="number"
                             autoComplete="current-otp"
                             className='w-full'
 
-                            {...register("otp", { required: true })}
+                            {...register("oldpassword", { required: true })}
                         />
                         {errors.name && <span className='text-red-600'>Please fill this field</span>}
                     </div>
-                    <div className={sentOtp == true ? 'mt-5 md:mt-3 block': 'hidden'}>
+                    <div className={'mt-5 md:mt-3 block'}>
                         <TextField
                             id="1"
                             label='Enter your new password'
@@ -126,20 +105,7 @@ function ForgetPassword() {
                             Submit
                         </Button>
                     </div>
-                    <div className='flex items-center justify-between px-10 mt-5'>
-                        <p className={sentOtp == true ? 'text-primary' : "hidden"}>{sentOtp == true ? count : ""}</p>
-
-                        {
-                            sentOtp == true ?
-                                <p className={count == 0 ? 'text-blue-600 font-semibold cursor-pointer' : 'text-slate-700-600 font-semibold '}>
-                                    {sentOtp == false ? "Send OTP" : "Resend OTP"}</p>
-                                :
-                                <Button variant="contained" type='submit'>
-                                    Send verification OTP
-                                </Button>
-                        }
-
-                    </div>
+                    
                 </form>
 
             </div>
@@ -147,4 +113,4 @@ function ForgetPassword() {
     )
 }
 
-export default ForgetPassword
+export default ChangePassword

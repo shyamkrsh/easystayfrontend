@@ -21,6 +21,7 @@ import ProfilePage from './Components/profile/ProfilePage.jsx'
 import PageNotFound from './PageNotFound.jsx'
 import EditListingForm from './Components/showListing/EditListingForm.jsx'
 import ForgetPassword from './ForgetPassword.jsx'
+import ChangePassword from './ChangePassword.jsx'
 
 function App() {
   const dispatch = useDispatch();
@@ -56,6 +57,7 @@ function App() {
             <Route path='/signup' element={<Signup />} />
             <Route path='/login' element={<Login />} />
             <Route path='/forgetPassword' element={<ForgetPassword />} />
+            <Route path='/api/changePassword/:userId' element={<ChangePassword />} />
             <Route path='/listings/search/:category' element={<Listings />} />
             <Route path='/listings/new' element={<NewListingForm />} />
             <Route path='/listings/show/:id' element={<ShowListingPage />} />
