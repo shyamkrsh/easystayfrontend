@@ -68,7 +68,6 @@ function ForgetPassword() {
     }
 
 
-
     return (
         <>
             <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-3'>

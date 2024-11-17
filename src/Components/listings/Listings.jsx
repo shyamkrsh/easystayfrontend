@@ -9,6 +9,7 @@ import Loader from '../Loader'
 import toast from 'react-hot-toast';
 
 function Listings() {
+  let baseUrl = import.meta.env.VITE_API_BASE_URL;
   const [listings, setListings] = useState([]);
   const [loader, setLoader] = useState(false);
   const [search, setSearch] = useState("");
@@ -18,7 +19,7 @@ function Listings() {
   useEffect(() => {
     setLoader(true);
     setTimeout(() => {
-      axios.get(`https://easystaybackend.vercel.app/api/listings/search/${category}`).then((res) => {
+      axios.get(`${baseUrl}/api/listings/search/${category}`, {withCredentials: true}).then((res) => {
         setLoader(false);
         setListings(res.data.data);
       }).catch((err) => {
