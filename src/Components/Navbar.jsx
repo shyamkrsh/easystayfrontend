@@ -99,18 +99,18 @@ export default function Navbar() {
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
 
-
+    const [search, setSearch] = React.useState(false)
     let baseUrl = import.meta.env.VITE_API_BASE_URL;
 
     const onSubmit = (data) => {
-
+        setSearch(true)
         axios.post(`${baseUrl}/api/login`, data, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
             }
         }).then((res) => {
-            
+            setSearch(false);
             if (res.data.success) {
                 toast.success("Login successfully", {
                     position: 'top-right'
@@ -118,12 +118,14 @@ export default function Navbar() {
                 fetchUserDetails();
                 window.location.href = "/"
             } else {
+                setSearch(false);
                 toast.error(res.data.message, {
                     position: 'top-right'
                 });
             }
 
         }).catch((err) => {
+            setSearch(false);
             toast.error(err.message, {
                 position: 'top-right'
             });
@@ -478,9 +480,11 @@ export default function Navbar() {
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}
                             </div>
                             <div className='flex flex-col mt-5'>
-                                <Button variant="contained" type='submit'>
-                                    Login
-                                </Button>
+                            <Button variant="contained" type='submit'>
+                                {
+                                    search ?  <p className='flex items-center gap-3'>Logging <span className="loading loading-spinner loading-md"></span></p> :   <p>Login</p>
+                                }
+                            </Button>
                                 <div className='flex items-center justify-between md:mt-3 md:mb-3'>
                                     <p className='text-center mt-5'><Link to={"/forgetPassword"} className='text-blue-600'>Forgot password</Link></p>
                                     <p className='text-center  mt-5'>Create an account <Link to={"/signup"} className='text-blue-600'

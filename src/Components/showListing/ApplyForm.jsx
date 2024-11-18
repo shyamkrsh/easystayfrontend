@@ -5,20 +5,24 @@ import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
+import { useState } from 'react';
 
 
-function ApplyForm({id}) {
-
+function ApplyForm({ id }) {
+    const [search, setSearch] = useState(false)
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
+        setSearch(true)
         axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/application/${id}/new`, data, {
             withCredentials: true,
         }).then((res) => {
+            setSearch(false);
             toast.success("Application accepted", {
                 position: 'top-right'
-              })
+            })
             reset()
         }).catch((err) => {
+            setSearch(false);
             toast.error(err.message);
         })
     }
@@ -98,10 +102,12 @@ function ApplyForm({id}) {
                 </div>
                 <div className='flex flex-col mt-5'>
                     <Button variant="contained" type='submit'>
-                        Apply
+                        {
+                            search ? <p className='flex items-center gap-3'>Applying <span className="loading loading-spinner loading-md"></span></p> : <p>Apply</p>
+                        }
                     </Button>
                 </div>
-                
+
             </form>
         </div>
     )
