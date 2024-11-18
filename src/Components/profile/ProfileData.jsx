@@ -14,13 +14,13 @@ function ProfileData({user}) {
                     }
                 </div>
                 <div>
-                    <h1 className='text-3xl font-semibold'>{user?.name}</h1>
+                    <h1 className='text-3xl font-semibold text-white'>{user?.name}</h1>
                 </div>
                 <div>
-                    <p className='text-lg font-semibold mt-3'>Gmail: {user?.email}</p>
+                    <p className='text-lg font-semibold mt-3 text-white'>Gmail: {user?.email}</p>
                 </div>
                 <div>
-                    <p className='text-lg font-semibold mt-3 text-left'>Phone: +91 {user?.mobNumber}</p>
+                    <p className='text-lg font-semibold mt-3 text-left text-white'>Phone: +91 {user?.mobNumber}</p>
                 </div>
             </div>
         </>

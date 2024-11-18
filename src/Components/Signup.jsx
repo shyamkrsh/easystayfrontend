@@ -8,6 +8,7 @@ import Login from '../Login.jsx';
 import axios from 'axios';
 import profile from './../assets/images/profile.png'
 import toast from 'react-hot-toast';
+import DemoNav from './DemoNav.jsx'
 
 
 function Signup() {
@@ -45,12 +46,8 @@ function Signup() {
     return (
 
         <>
-            <div className='bg-blue-600 text-white flex flex-start gap-5 w-[100%] px-5 py-3'>
-                <Link onClick={() => window.history.back()} ><IoArrowBack className='text-2xl font-extrabold' /></Link>
-                <h2 className='text-xl font-semibold'>Create Account</h2>
-            </div>
-
-            <div className='w-[100%] mt-0 md:mt-8 p-10 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
+           <DemoNav heading={"Signup here"}/>
+            <div className='w-[100%] bg-slate-800 h-[100vh] pt-24 md:pt-8 p-10 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]'>
                 <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
                     <div className='mt-5 text-center  flex items-center justify-center'>
                         <label htmlFor="image" className='flex flex-col items-center justify-center'>
