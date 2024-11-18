@@ -39,7 +39,7 @@ function Listings() {
           <Loader />
         </div>
 
-        <div className='mt-28 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4'>
+        <div className='pt-28 grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 px-5 gap-2'>
 
           {
             search ?

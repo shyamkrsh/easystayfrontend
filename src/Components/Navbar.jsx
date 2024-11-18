@@ -216,14 +216,7 @@ export default function Navbar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem onClick={() => navigate("/messages")}>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={1} color="error">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
+            
             <MenuItem onClick={() => navigate("/notifications")}>
                 <IconButton
                     size="large"
@@ -268,7 +261,7 @@ export default function Navbar() {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "1" }}>
+            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "1", backgroundColor: '#201f4d' }}>
 
                 <Toolbar>
                     <IconButton
@@ -291,27 +284,27 @@ export default function Navbar() {
                             <div className="drawer-side ">
                                 <label htmlFor="my-drawer" aria-label="close sidebar" className="drawer-overlay"></label>
 
-                                <div className=" bg-white text-base-content min-h-full w-[70vw] md:w-80 p-4 z-50">
-                                    <div className='flex items-center gap-3 ps-3 mt-10'>
-                                        <img className='w-[50px]' src="https://png.pngtree.com/png-vector/20230831/ourmid/pngtree-house-with-no-background-png-image_9197435.png" alt="" />
-                                        <h1 className='text-2xl font-bold '>EasyStay</h1>
+                                <div className=" bg-slate-700 text-white min-h-full w-[70vw] md:w-80 p-4 z-50">
+                                    <div className='flex items-centerps-3 mt-10'>
+                                        <h1 className='text-3xl font-bold '>εαѕyѕтαy</h1>
                                     </div>
-                                    <ul className='mt-8 sidebar-list ps-5'>
+                                    <div className='w-100 h-1 bg-pink-500 mt-2'></div>
+                                    <ul className='mt-8 sidebar-list ps-5 text-white'>
 
-                                        <Link to="/"><li><FaHome id='sidebar-icon' /> Home</li></Link>
-                                        <Link to={user && user?._id ? "/dashboard" : '/'}><li><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
+                                        <Link to="/"><li className='text-white'><FaHome id='sidebar-icon' /> Home</li></Link>
+                                        <Link to={user && user?._id ? "/dashboard" : '/'}><li className='text-white'><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
 
-                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li><AddIcon id='sidebar-icon' />Post services</li></Link>
+                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li className='text-white'><AddIcon id='sidebar-icon' />Post services</li></Link>
 
-                                        <Link to="/about" ><li><FcAbout id='sidebar-icon' /> About Us</li></Link>
-                                        <Link to="/contact" ><li><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>
-                                        <Link to="/help" ><li><MdHelpCenter id='sidebar-icon' /> Help Center</li></Link>
+                                        <Link to="/about" ><li className='text-white'><FcAbout id='sidebar-icon' /> About Us</li></Link>
+                                        <Link to="/contact" ><li className='text-white'><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>
+                                        <Link to="/help" ><li className='text-white'><MdHelpCenter id='sidebar-icon' /> Help Center</li></Link>
                                         {
                                             user && user?._id ? (
-                                                <Link onClick={handleLogout} ><li><MdLogout id='sidebar-icon' /> Logout</li></Link>
+                                                <Link onClick={handleLogout} ><li className='text-white'><MdLogout id='sidebar-icon' /> Logout</li></Link>
                                             )
                                                 :
-                                                (<Link to="/login"  ><li><MdLogin id='sidebar-icon' /> Login</li></Link>)
+                                                (<Link to="/login"  ><li className='text-white'><MdLogin id='sidebar-icon' /> Login</li></Link>)
                                         }
 
 
@@ -440,15 +433,14 @@ export default function Navbar() {
 
 
 
-                <dialog id="my_modal_3" className="modal text-black ">
-                    <div className="modal-box p-5">
+                <dialog id="my_modal_3" className="modal-box p-5 bg-slate-700 text-white w-[100%]">
+                    <div className="bg-slate-700 text-white">
                         <form method="dialog">
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
-                        <h3 className="font-bold text-lg">Login</h3>
-                        <form onSubmit={handleSubmit(onSubmit)} >
+                        <h3 className="font-bold text-xl text-center">Login to your Account</h3>
+                        <form onSubmit={handleSubmit(onSubmit)}>
                             <div className='mt-5'>
-
                                 <TextField
                                     id="email"
                                     label='Enter your email'
@@ -456,11 +448,17 @@ export default function Navbar() {
                                     autoComplete="current-email"
                                     className='w-full'
                                     {...register("email", { required: true })}
+                                    InputLabelProps={{
+                                        style: {color: 'white'}
+                                    }}
+
+                                    inputProps={{
+                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                    }}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
                             </div>
                             <div className='mt-3'>
-
                                 <TextField
                                     id="password"
                                     label='Enter your password'
@@ -468,7 +466,15 @@ export default function Navbar() {
                                     autoComplete="current-password"
                                     className='w-full'
                                     {...register("password", { required: true })}
+                                    InputLabelProps={{
+                                        style: {color: 'white'}
+                                    }}
+                                    inputProps={{
+                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                    }}
+                                    
                                 />
+                                
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}
                             </div>
                             <div className='flex flex-col mt-5'>
@@ -476,13 +482,12 @@ export default function Navbar() {
                                     Login
                                 </Button>
                                 <div className='flex items-center justify-between md:mt-3 md:mb-3'>
-                                    <p className='text-center mt-5'><Link to={"/forgetPassword"} className='underline text-blue-600 text-xs md:text-xl'>Forgot password</Link></p>
-                                    <p className='text-center text-xs md:text-xl mt-5'>Create an account <Link to={"/signup"} className='underline text-blue-600'
+                                    <p className='text-center mt-5'><Link to={"/forgetPassword"} className='text-blue-600'>Forgot password</Link></p>
+                                    <p className='text-center  mt-5'>Create an account <Link to={"/signup"} className='text-blue-600'
                                         onClick={() => document.getElementById('my_modal_3').showModal()}
                                     >Signup</Link></p>
                                 </div>
                             </div>
-
                         </form>
                     </div>
                 </dialog>

@@ -218,14 +218,7 @@ export default function SearchNavbar({ search, setSearch }) {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem onClick={() => navigate("/messages")}>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={1} color="error">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
+           
             <MenuItem onClick={() => navigate("/notifications")}>
                 <IconButton
                     size="large"
@@ -264,7 +257,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "10" }}>
+            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "10", backgroundColor: '#201f4d' }}>
 
                 <Toolbar>
                     <IconButton
@@ -314,14 +307,7 @@ export default function SearchNavbar({ search, setSearch }) {
 
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            {
-                                user && user._id ? <Badge badgeContent={4} color="error">
-                                    <MailIcon onClick={() => navigate("/messages")} />
-                                </Badge>
-                                    : ""
-                            }
-                        </IconButton>
+                        
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
@@ -379,12 +365,12 @@ export default function SearchNavbar({ search, setSearch }) {
 
 
                 {/* <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button> */}
-                <dialog id="my_modal_3" className="modal text-black ">
-                    <div className="modal-box p-5">
+                <dialog id="my_modal_3" className="modal-box p-5 bg-slate-700 text-white w-[100%]">
+                    <div className="bg-slate-700 text-white">
                         <form method="dialog">
                             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
                         </form>
-                        <h3 className="font-bold text-lg">Login</h3>
+                        <h3 className="font-bold text-lg text-center">Login to your Account</h3>
                         <form action='/login' onSubmit={handleSubmit(onSubmit)} >
                             <div className='mt-5'>
 
@@ -395,6 +381,13 @@ export default function SearchNavbar({ search, setSearch }) {
                                     autoComplete="current-email"
                                     className='w-full'
                                     {...register("email", { required: true })}
+                                    InputLabelProps={{
+                                        style: {color: 'white'}
+                                    }}
+
+                                    inputProps={{
+                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                    }}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
                             </div>
@@ -407,6 +400,13 @@ export default function SearchNavbar({ search, setSearch }) {
                                     autoComplete="current-password"
                                     className='w-full'
                                     {...register("password", { required: true })}
+                                    InputLabelProps={{
+                                        style: {color: 'white'}
+                                    }}
+
+                                    inputProps={{
+                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                    }}
                                 />
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}
                             </div>
@@ -416,8 +416,8 @@ export default function SearchNavbar({ search, setSearch }) {
                                     Login
                                 </Button>
                                 <div className='flex items-center justify-between md:mt-3 md:mb-3'>
-                                    <p className='text-center mt-5'><Link to={"/forgetPassword"} className='underline text-blue-600 text-xs md:text-xl'>Forgot password</Link></p>
-                                    <p className='text-center text-xs md:text-xl mt-5'>Create an account <Link to="/signup" className='underline text-blue-600'
+                                    <p className='text-center mt-5'><Link to={"/forgetPassword"} className='text-blue-600 text-[14px]'>Forgot password</Link></p>
+                                    <p className='text-center  mt-5'>Create an account <Link to="/signup" className='text-blue-600'
                                         onClick={() => document.getElementById('my_modal_3').hideModal()}
                                     >Signup</Link></p>
                                 </div>

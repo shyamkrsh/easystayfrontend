@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import HomePage from './Components/home/HomePage.jsx'
 import Signup from './Components/Signup.jsx'

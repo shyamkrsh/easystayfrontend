@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react'
-import ShowListingNav from './ShowListingNav'
 import ShowSlides from './ShowSlides'
 import ListingsDetails from './ListingsDetails'
 import ApplyForm from './ApplyForm'
@@ -14,8 +13,9 @@ import Fab from '@mui/material/Fab';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux'
 import { toast } from 'react-hot-toast'
-import SearchNavbar from '../SearchNavbar'
 import {Link} from 'react-router-dom'
+import DemoNav from '../DemoNav.jsx'
+
 
 
 function ShowListingPage() {
@@ -59,8 +59,8 @@ function ShowListingPage() {
 
   return (
     <>
-      <SearchNavbar/>
-      <div className='mt-20 '>
+      <DemoNav heading={"Details"}/>
+      <div className='pt-20 '>
         <ShowSlides
         img1={listingData ? listingData?.images[0].url : ""} img2={listingData ? listingData?.images[1].url : ""}
         img3={listingData ? listingData?.images[2].url : ""} img4={listingData ? listingData?.images[3].url : ""}

@@ -196,14 +196,7 @@ export default function DashboardNav({search, setSearch}) {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            <MenuItem onClick={() => navigate("/notifications")}>
-                <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                    <Badge badgeContent={4} color="error">
-                        <MailIcon />
-                    </Badge>
-                </IconButton>
-                <p>Messages</p>
-            </MenuItem>
+           
             <MenuItem onClick={() => navigate("/notifications")}>
                 <IconButton
                     size="large"
@@ -242,7 +235,7 @@ export default function DashboardNav({search, setSearch}) {
 
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "1" }}>
+            <AppBar style={{ position: "fixed", marginTop: "0", zIndex: "1", backgroundColor: '#201f4d' }}>
 
                 <Toolbar>
                     <IconButton
@@ -298,11 +291,7 @@ export default function DashboardNav({search, setSearch}) {
 
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        <IconButton size="large" aria-label="show 4 new mails" color="inherit">
-                            <Badge badgeContent={4} color="error" onClick={() => navigate("/messages")}>
-                                <MailIcon />
-                            </Badge>
-                        </IconButton>
+                        
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
