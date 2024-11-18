@@ -95,10 +95,10 @@ export default function SearchNavbar({ search, setSearch }) {
 
     const user = useSelector((state) => state.user.user);
     const dispatch = useDispatch();
-
+    let baseUrl = import.meta.env.VITE_API_BASE_URL;
     const onSubmit = (data) => {
       
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/login`, data, {
+        axios.post(`${baseUrl}/api/login`, data, {
             withCredentials: true,
             headers: {
                 'Content-Type': 'application/json',
@@ -124,15 +124,12 @@ export default function SearchNavbar({ search, setSearch }) {
 
     }
     const handleLogout = () => {
-        axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/logout`, {
-            withCredentials: true,
-        }).then((res) => {
+        axios.post(`${baseUrl}/api/logout`, {}, { withCredentials: true }).then((res) => {
             if (res.data.success) {
                 toast.success("Logout successfully", {
                     position: 'top-right'
                 })
                 dispatch(setUserDetails(null))
-               
                 setTimeout(() => {
                     window.location.href = "/"
                 }, 500);

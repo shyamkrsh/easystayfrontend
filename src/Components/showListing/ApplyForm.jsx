@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+import { Link, Navigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
@@ -99,6 +99,9 @@ function ApplyForm({ id }) {
                         }}
                     />
                     {errors.password && <span className='text-red-600'>Please fill this field</span>}
+                </div>
+                <div className='mt-5 text-right'>
+                    <p className='bg-yellow-500 text-white px-3 py-2 rounded-md font-semibold inline-block cursor-pointer' onClick={() => window.location.href ="https://razorpay.me/@shyamkumarsharma5404"}>Payment Online</p>
                 </div>
                 <div className='flex flex-col mt-5'>
                     <Button variant="contained" type='submit'>

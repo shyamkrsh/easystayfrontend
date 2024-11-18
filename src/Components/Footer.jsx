@@ -31,6 +31,7 @@ function Footer() {
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Community</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Roms</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Find your choice</Link></li>
+                            <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Refund Policy</Link></li>
                         </ul>
                     </div>
                     <div className="col-1">
