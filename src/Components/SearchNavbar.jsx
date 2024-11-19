@@ -174,16 +174,13 @@ export default function SearchNavbar({ search, setSearch , setShowListen}) {
     recognition.onresult = (event) => {
         let transcript = event.results[0][0].transcript;
         setSearch(transcript);
+        recognition.stop();
+        setShowListen(false);
     };
-
 
     let handleMicSearch = () => {
         setShowListen(true);
         recognition.start();
-        setTimeout(() => {
-            recognition.stop();
-            setShowListen(false);
-        }, 15000);
     }
 
 
