@@ -153,7 +153,6 @@ function Signup() {
                 </form>
 
                 <dialog id="my_modal_3" className="modal text-black ">
-
                     <Login />
                 </dialog>
             </div>

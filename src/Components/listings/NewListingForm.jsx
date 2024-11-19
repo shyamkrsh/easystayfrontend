@@ -22,7 +22,9 @@ function NewListingForm() {
 
   const navigate = useNavigate();
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
+  const [search, setSearch] = useState(false);
   const onSubmit = (data) => {
+    setSearch(true);
     const formData = new FormData();
     const images = [image1, image2, image3, image4];
     images.forEach((image) => {
@@ -35,6 +37,7 @@ function NewListingForm() {
     axios.post(`${baseUrl}/api/listings/new`, formData, {
       withCredentials: true,
     }).then((res) => {
+      setSearch(false);
       if (res.data.success) {
         toast.success("New Place added", {
           position: 'top-right'
@@ -46,6 +49,7 @@ function NewListingForm() {
       }
       navigate("/")
     }).catch((err) => {
+      setSearch(false);
       toast.error(err.message, {
         position: 'top-right'
       });
@@ -148,7 +152,7 @@ function NewListingForm() {
 
             <div className='mt-5 flex items-center justify-between'>
               <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white' />
                 <input
                   type="file"
                   id='image1'
@@ -156,11 +160,11 @@ function NewListingForm() {
                   className='w-[120px] lg:w-[200px] opacity-0'
                   onChange={(e) => setImage1(e?.target?.files[0])}
                 />
-                <p className='text-center mt-2'>{image1?.name?.slice(0, 10) + "..."}</p>
+                <p className='text-center mt-2 text-white'>{image1?.name?.slice(0, 10) + "..."}</p>
               </div>
 
               <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white' />
                 <input
                   type="file"
                   id='image2'
@@ -168,13 +172,13 @@ function NewListingForm() {
                   className='w-[120px] lg:w-[200px] opacity-0'
                   onChange={(e) => setImage2(e?.target?.files[0])}
                 />
-                <p className='text-center mt-2'>{image2?.name?.slice(0, 10) + "..."}</p>
+                <p className='text-center mt-2 text-white'>{image2?.name?.slice(0, 10) + "..."}</p>
               </div>
 
             </div>
             <div className='mt-5 flex items-center justify-between'>
               <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white' />
                 <input
                   type="file"
                   id='image3'
@@ -182,10 +186,10 @@ function NewListingForm() {
                   className='w-[120px] lg:w-[200px] opacity-0'
                   onChange={(e) => setImage3(e?.target?.files[0])}
                 />
-                <p className='text-center mt-2'>{image3?.name?.slice(0, 10) + "..."}</p>
+                <p className='text-center mt-2 text-white'>{image3?.name?.slice(0, 10) + "..."}</p>
               </div>
               <div className='relative rounded-md h-[4rem] cursor-pointer' style={{ border: '1px dashed gray' }}>
-                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]' />
+                <CloudUploadIcon className='opacity-80 absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] text-white' />
                 <input
                   type="file"
                   id='image4'
@@ -193,7 +197,7 @@ function NewListingForm() {
                   className='w-[120px] lg:w-[20px] opacity-0'
                   onChange={(e) => setImage4(e?.target?.files[0])}
                 />
-                <p className='text-center mt-2'>{image4?.name?.slice(0, 10) + "..."}</p>
+                <p className='text-center mt-2 text-white'>{image4?.name?.slice(0, 10) + "..."}</p>
               </div>
             </div>
 
@@ -232,7 +236,9 @@ function NewListingForm() {
 
             <div className='flex flex-col mt-8'>
               <Button variant="contained" type='submit'>
-                Submit
+                {
+                  search ? <p className='flex items-center gap-3'>Submiting <span className="loading loading-spinner loading-md"></span></p> : <p>Submit</p>
+                }
               </Button>
 
             </div>
