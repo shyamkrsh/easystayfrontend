@@ -10,7 +10,8 @@ import YourClients from './YourClients';
 import Reports from './Reports';
 import Payments from './Payments';
 import { MdMenuOpen } from "react-icons/md";
-
+import { AiFillBank } from "react-icons/ai";
+import AddAccount from './AddAccount'
 
 function Hero() {
 
@@ -65,12 +66,18 @@ function Hero() {
                                     <p className='text-xl font-semibold'>Payments</p>
                                 </Link>
                             </li>
+                            <li className='ps-10 hover:bg-slate-200 py-2' onClick={() => {handleCloseSideBar(), setShowCount(5)}}>
+                                <Link className='flex items-center gap-3 opacity-80 hover:opacity-100'>
+                                    <AiFillBank className='text-3xl' />
+                                    <p className='text-xl font-semibold'>Account Details</p>
+                                </Link>
+                            </li>
                         </ul>
                     </div>
                 </div>
                 <div id='displaySide' className="displaySide w-[100%]  md:w-[75%] h-[100%] bg-white ">
                     {
-                        showCount == 1 ? <YourPosts /> : showCount == 2 ? <YourClients /> : showCount == 3 ? <Reports /> : <Payments />
+                        showCount == 1 ? <YourPosts /> : showCount == 2 ? <YourClients /> : showCount == 3 ? <Reports /> : showCount == 5 ? <AddAccount/> :  <Payments /> 
                     }
 
                 </div>
