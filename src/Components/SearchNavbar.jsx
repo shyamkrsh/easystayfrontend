@@ -36,7 +36,7 @@ import { setUserDetails } from '../store/userSlice';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import toast from 'react-hot-toast';
-
+import { IoMicCircle } from "react-icons/io5";
 
 
 
@@ -81,7 +81,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-export default function SearchNavbar({ search, setSearch }) {
+export default function SearchNavbar({ search, setSearch , setShowListen}) {
     const [anchorEl, setAnchorEl] = React.useState(null);
     const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
@@ -89,7 +89,6 @@ export default function SearchNavbar({ search, setSearch }) {
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
-
     const navigate = useNavigate();
     const { fetchUserDetails } = useContext(Context);
 
@@ -97,7 +96,6 @@ export default function SearchNavbar({ search, setSearch }) {
     const dispatch = useDispatch();
     let baseUrl = import.meta.env.VITE_API_BASE_URL;
     const onSubmit = (data) => {
-      
         axios.post(`${baseUrl}/api/login`, data, {
             withCredentials: true,
             headers: {
@@ -147,7 +145,6 @@ export default function SearchNavbar({ search, setSearch }) {
     }
 
 
-
     const handleSearch = (event) => {
         event.preventDefault();
     }
@@ -170,6 +167,23 @@ export default function SearchNavbar({ search, setSearch }) {
     };
     const handleLoggedProfile = () => {
         document.getElementById('my_modal_3').showModal();
+    }
+
+    const recognition = new window.webkitSpeechRecognition();
+    recognition.continuous = true;
+    recognition.onresult = (event) => {
+        let transcript = event.results[0][0].transcript;
+        setSearch(transcript);
+    };
+
+
+    let handleMicSearch = () => {
+        setShowListen(true);
+        recognition.start();
+        setTimeout(() => {
+            recognition.stop();
+            setShowListen(false);
+        }, 15000);
     }
 
 
@@ -215,7 +229,7 @@ export default function SearchNavbar({ search, setSearch }) {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-           
+
             <MenuItem onClick={() => navigate("/notifications")}>
                 <IconButton
                     size="large"
@@ -274,7 +288,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                 <button onClick={() => window.history.back()} ><IoArrowBack /></button>
 
                             </div>
-                            
+
                         </div>
 
                     </IconButton>
@@ -289,22 +303,26 @@ export default function SearchNavbar({ search, setSearch }) {
                     </Typography>
 
                     <Search>
-                        <form onSubmit={handleSearch} className='md:w-[400px]'>
-                            <SearchIconWrapper>
-                                <SearchIcon />
-                            </SearchIconWrapper>
-                            <StyledInputBase
-                                placeholder="Search area…"
-                                inputProps={{ 'aria-label': 'search' }}
-                                value={search}
-                                onChange={() => setSearch(event.target.value)}
-                            />
+                        <form onSubmit={handleSearch} className='md:w-[400px] flex items-center justify-between pe-3 '>
+                            <div className='w-[100%]'>
+                                <SearchIconWrapper>
+                                    <SearchIcon />
+                                </SearchIconWrapper>
+                                <StyledInputBase
+                                    placeholder="Search area…"
+                                    inputProps={{ 'aria-label': 'search' }}
+                                    value={search}
+                                    onChange={() => setSearch(event.target.value)}
+                                />
+                            </div>
+                            <IoMicCircle className='text-4xl cursor-pointer' onClick={handleMicSearch} />
                         </form>
                     </Search>
 
+
                     <Box sx={{ flexGrow: 1 }} />
                     <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                        
+
                         <IconButton
                             size="large"
                             aria-label="show 17 new notifications"
@@ -314,7 +332,7 @@ export default function SearchNavbar({ search, setSearch }) {
                                 user && user._id ? <Badge badgeContent={17} color="error">
                                     <NotificationsIcon onClick={() => navigate("/notifications")} />
                                 </Badge>
-                                : ""
+                                    : ""
                             }
                         </IconButton>
                         <IconButton
@@ -357,10 +375,6 @@ export default function SearchNavbar({ search, setSearch }) {
                         </IconButton>
                     </Box>
                 </Toolbar>
-
-
-
-
                 {/* <button className="btn" onClick={() => document.getElementById('my_modal_3').showModal()}>open modal</button> */}
                 <dialog id="my_modal_3" className="modal-box p-5 bg-slate-700 text-white w-[100%]">
                     <div className="bg-slate-700 text-white">
@@ -370,7 +384,6 @@ export default function SearchNavbar({ search, setSearch }) {
                         <h3 className="font-bold text-lg text-center">Login to your Account</h3>
                         <form action='/login' onSubmit={handleSubmit(onSubmit)} >
                             <div className='mt-5'>
-
                                 <TextField
                                     id=""
                                     label='Enter your email'
@@ -379,17 +392,16 @@ export default function SearchNavbar({ search, setSearch }) {
                                     className='w-full'
                                     {...register("email", { required: true })}
                                     InputLabelProps={{
-                                        style: {color: 'white'}
+                                        style: { color: 'white' }
                                     }}
 
                                     inputProps={{
-                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
                                     }}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
                             </div>
                             <div className='mt-3'>
-
                                 <TextField
                                     id=""
                                     label='Enter your password'
@@ -398,11 +410,11 @@ export default function SearchNavbar({ search, setSearch }) {
                                     className='w-full'
                                     {...register("password", { required: true })}
                                     InputLabelProps={{
-                                        style: {color: 'white'}
+                                        style: { color: 'white' }
                                     }}
 
                                     inputProps={{
-                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
                                     }}
                                 />
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}

@@ -37,7 +37,7 @@ import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
 import { useEffect } from 'react';
 import AddIcon from '@mui/icons-material/Add';
-
+import { IoMicCircle } from "react-icons/io5";
 
 // all module imported above
 
@@ -218,7 +218,7 @@ export default function Navbar() {
             open={isMobileMenuOpen}
             onClose={handleMobileMenuClose}
         >
-            
+
             <MenuItem onClick={() => navigate("/notifications")}>
                 <IconButton
                     size="large"
@@ -321,7 +321,7 @@ export default function Navbar() {
                         noWrap
                         component="div"
                         sx={{ display: { xs: 'none', sm: 'block' } }}
-                        
+
                     >
                         {/* Logo goes here */}
                         <h1 className='text-2xl font-bold me-[8rem] hidden lg:block'>EasyStay</h1>
@@ -330,14 +330,17 @@ export default function Navbar() {
 
                     <Link to={`/listings/search/${"hostel"}`}>
                         <Search className='hidden lg:block'>
-                            <form method="get" action="/search" className='w-[400px] '>
-                                <SearchIconWrapper>
-                                    <SearchIcon />
-                                </SearchIconWrapper>
-                                <StyledInputBase
-                                    placeholder="Search area…"
-                                    inputProps={{ 'aria-label': 'search' }}
-                                />
+                            <form method="get" action="/search" className='w-[400px] flex items-center justify-between pe-3 '>
+                                <div>
+                                    <SearchIconWrapper>
+                                        <SearchIcon />
+                                    </SearchIconWrapper>
+                                    <StyledInputBase
+                                        placeholder="Search area…"
+                                        inputProps={{ 'aria-label': 'search...' }}
+                                    />
+                                </div>
+                                <IoMicCircle className='text-3xl' />
                             </form>
                         </Search>
                     </Link>
@@ -346,7 +349,7 @@ export default function Navbar() {
 
                     <div className='list-none gap-5 hidden lg:flex '>
                         <Link to="/"><li className='font-semibold'> Home</li></Link>
-                        <div className={user && user._id ? 'flex gap-5': 'hidden'}>
+                        <div className={user && user._id ? 'flex gap-5' : 'hidden'}>
                             <Link to={user && user?._id ? "/dashboard" : '/'}><li className='font-semibold'>Dashboard</li></Link>
 
                             <Link to={user && user?._id ? "/listings/new" : '/'}><li className='font-semibold'>Post services</li></Link>
@@ -355,13 +358,6 @@ export default function Navbar() {
                         <Link to="/about" ><li className='font-semibold'> About Us</li></Link>
                         <Link to="/contact" ><li className='font-semibold'> Contact Us</li></Link>
                     </div>
-
-
-
-
-
-
-
 
                     <div className='lg:hidden' onClick={() => navigate(`/listings/search/${"hostel"}`)}>
                         <SearchIcon />
@@ -451,11 +447,11 @@ export default function Navbar() {
                                     className='w-full'
                                     {...register("email", { required: true })}
                                     InputLabelProps={{
-                                        style: {color: 'white'}
+                                        style: { color: 'white' }
                                     }}
 
                                     inputProps={{
-                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
                                     }}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
@@ -469,22 +465,22 @@ export default function Navbar() {
                                     className='w-full'
                                     {...register("password", { required: true })}
                                     InputLabelProps={{
-                                        style: {color: 'white'}
+                                        style: { color: 'white' }
                                     }}
                                     inputProps={{
-                                        style: {color: 'white', backgroundColor: '#628b8c', borderRadius: '3px'}
+                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
                                     }}
-                                    
+
                                 />
-                                
+
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}
                             </div>
                             <div className='flex flex-col mt-5'>
-                            <Button variant="contained" type='submit'>
-                                {
-                                    search ?  <p className='flex items-center gap-3'>Logging <span className="loading loading-spinner loading-md"></span></p> :   <p>Login</p>
-                                }
-                            </Button>
+                                <Button variant="contained" type='submit'>
+                                    {
+                                        search ? <p className='flex items-center gap-3'>Logging <span className="loading loading-spinner loading-md"></span></p> : <p>Login</p>
+                                    }
+                                </Button>
                                 <div className='flex items-center justify-between md:mt-3 md:mb-3'>
                                     <p className='text-center mt-5'><Link to={"/forgetPassword"} className='text-blue-600'>Forgot password</Link></p>
                                     <p className='text-center  mt-5'>Create an account <Link to={"/signup"} className='text-blue-600'
