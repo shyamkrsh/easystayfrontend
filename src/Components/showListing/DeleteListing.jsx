@@ -22,7 +22,10 @@ export default function DeleteListing({ id }) {
     const navigate = useNavigate()
 
     const handleDeleteListing = () => {
-        axios.delete(`${baseUrl}/api/listings/${id}/delete`).then((res) => {
+        axios.delete(`${baseUrl}/api/listings/${id}/delete`, {
+            withCredentials: true,
+        }).then((res) => {
+            console.log(res.data);
             toast.success("Your post has been deleted");
             navigate("/dashboard");
         }).catch((err) => {
