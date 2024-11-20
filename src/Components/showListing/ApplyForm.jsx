@@ -6,9 +6,10 @@ import { useForm } from "react-hook-form";
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
+import RazorpayPayment from './RajorpayPayment';
 
 
-function ApplyForm({ id }) {
+function ApplyForm({ id , amount}) {
     const [search, setSearch] = useState(false)
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const onSubmit = (data) => {
@@ -101,7 +102,8 @@ function ApplyForm({ id }) {
                     {errors.password && <span className='text-red-600'>Please fill this field</span>}
                 </div>
                 <div className='mt-5 text-right'>
-                    <p className='bg-yellow-500 text-white px-3 py-2 rounded-md font-semibold inline-block cursor-pointer' onClick={() => window.location.href ="https://razorpay.me/@shyamkumarsharma5404"}>Payment Online</p>
+                    <RazorpayPayment amount={amount}/>
+                    {/* <p className='bg-yellow-500 text-white px-3 py-2 rounded-md font-semibold inline-block cursor-pointer' onClick={() => window.location.href ="https://razorpay.me/@shyamkumarsharma5404"}>Payment Online</p> */}
                 </div>
                 <div className='flex flex-col mt-5'>
                     <Button variant="contained" type='submit'>

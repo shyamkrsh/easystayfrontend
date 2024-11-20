@@ -35,10 +35,12 @@ import { setUserDetails } from '../store/userSlice.jsx';
 import { MdDashboard } from "react-icons/md";
 import toast from 'react-hot-toast';
 import { MdHelpCenter } from "react-icons/md";
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import AddIcon from '@mui/icons-material/Add';
 import { IoMicCircle } from "react-icons/io5";
-
+import InputAdornment from '@mui/material/InputAdornment';
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // all module imported above
 
 
@@ -90,6 +92,11 @@ export default function Navbar() {
     const isMenuOpen = Boolean(anchorEl);
     const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
+    const [showPassword, setShowPassword] = useState(false);
+
+    const togglePasswordVisibility = () => {
+        setShowPassword(!showPassword);
+    };
 
     const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
@@ -460,17 +467,51 @@ export default function Navbar() {
                                 <TextField
                                     id="password"
                                     label='Enter your password'
-                                    type="password"
+                                    type={showPassword ? "text" : "password"}
                                     autoComplete="current-password"
                                     className='w-full'
                                     {...register("password", { required: true })}
                                     InputLabelProps={{
-                                        style: { color: 'white' }
+                                        style: { color: 'white'}
                                     }}
                                     inputProps={{
-                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
+                                        style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '5px' }
                                     }}
-
+    
+                                    InputProps={{
+                                        endAdornment: (
+                                            <InputAdornment position="end">
+                                                <IconButton
+                                                    aria-label="toggle password visibility"
+                                                    onClick={togglePasswordVisibility}
+                                                    edge="end"
+                                                    style={{ color: 'white' }} // Adjust icon color
+                                                >
+                                                    {showPassword ? <VisibilityOff /> : <Visibility />}
+                                                </IconButton>
+                                            </InputAdornment>
+                                        ),
+                                    }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            "& fieldset": {
+                                                borderColor: "white", // Default border color
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "#90caf9", // Hover border color
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "#4caf50", // Focus border color
+                                            },
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "white", // Label color
+                                        },
+                                        "& .MuiInputLabel-root.Mui-focused": {
+                                            color: "#4caf50", // Focused label color
+                                        },
+                                    }}
+    
                                 />
 
                                 {errors.password && <span className='text-red-600'>Please fill this field</span>}

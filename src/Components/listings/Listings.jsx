@@ -16,7 +16,9 @@ function Listings() {
   const [search, setSearch] = useState("");
   const [showListen, setShowListen] = useState(false);
 
-  const { category } = useParams();
+  
+
+  const { category } = useParams();                               
 
   useEffect(() => {
     setLoader(true);

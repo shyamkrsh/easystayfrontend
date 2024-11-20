@@ -13,7 +13,7 @@ const RazorpayPayment = ({ amount }) => {
     };
 
     const handlePayment = async (e) => {
-        e.target.preventDefault()
+        
         const isRazorpayLoaded = await loadRazorpay();
         if (!isRazorpayLoaded) {
             alert("Failed to load Razorpay. Please try again.");
@@ -22,7 +22,7 @@ const RazorpayPayment = ({ amount }) => {
 
         try {
             // Create order on the backend
-            const { data } = await axios.post("https://easystaybackend.onrender.com/create-order", {
+            const { data } = await axios.post("https://easystaybackend.vercel.app/create-order", {
                 amount, // Amount in rupees
                 currency: "INR",
             });
@@ -48,7 +48,7 @@ const RazorpayPayment = ({ amount }) => {
                     contact: "9999999999",
                 },
                 theme: {
-                    color: "#3399cc",
+                    color: "#192874",
                 },
             };
 
@@ -61,8 +61,8 @@ const RazorpayPayment = ({ amount }) => {
     };
 
     return (
-        <button onClick={handlePayment} className="bg-yellow-600 text-black font-semibold px-3 py-2 rounded-md">
-            Pay ₹{amount}
+        <button onClick={handlePayment} className="bg-yellow-400 w-full text-black font-semibold px-3 py-2 rounded-md">
+            Pay ₹ {amount}
         </button>
     );
 };
