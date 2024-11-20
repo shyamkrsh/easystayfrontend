@@ -120,16 +120,7 @@ function NewListingForm() {
               />
               {errors.name && <span className='text-red-600'>Please fill this field</span>}
             </div>
-            <div className='mt-5'>
-              <select id='category' name='availability' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
-                {...register("availability", { required: true })}
-              >
-                <option value="">Select Availability</option>
-                <option value="available" >Available</option>
-                <option value="unavailable" >Unavailable</option>
-              </select>
-              {errors.name && <span className='text-red-600'>Please fill this field</span>}
-            </div>
+           
 
             <div className='mt-5'>
               <TextField
@@ -202,16 +193,7 @@ function NewListingForm() {
             </div>
 
 
-            <div className='mt-5'>
-              <select id='payment' name='payment' className='border border-slate-300 w-full h-[55px] px-3 text-slate-800'
-                {...register("payment", { required: true })}
-              >
-                <option value="">Select Payment Status</option>
-                <option value="pending" >Pending</option>
-                <option value="done" >Done</option>
-              </select>
-              {errors.name && <span className='text-red-600'>Please fill this field</span>}
-            </div>
+            
             <div className='mt-5'>
               <TextField
                 id="description"
