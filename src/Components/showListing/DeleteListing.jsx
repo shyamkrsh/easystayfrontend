@@ -9,6 +9,7 @@ import Slide from '@mui/material/Slide';
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { toast } from 'react-hot-toast';
 
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -60,7 +61,7 @@ export default function DeleteListing({ id }) {
                 <DialogTitle><p className='text-red-600'>Alert</p></DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
-                        Are you agree to delete your services
+                        Are you agree to delete this services
                     </DialogContentText>
                 </DialogContent>
                 <DialogActions>
