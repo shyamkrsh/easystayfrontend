@@ -74,7 +74,7 @@ function Signup() {
                                 imageUrl ? <RiImageAddFill className='text-white text-[3rem] absolute top-22 right-8' /> : ""
                             }
 
-                            <p>{image.name}</p>
+                          
                         </label>
                         <input type="file" name="image" id="image" className='hidden' onChange={(e) => { setImage(e?.target?.files[0]), setImageUrl(URL.createObjectURL(e?.target?.files[0])) }} />
                     </div>

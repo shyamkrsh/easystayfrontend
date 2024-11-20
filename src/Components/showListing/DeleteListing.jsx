@@ -33,13 +33,6 @@ export default function DeleteListing({ id }) {
         })
     }
 
-
-
-
-
-
-
-
     const [open, setOpen] = React.useState(false);
     const handleClickOpen = () => {
         setOpen(true);
