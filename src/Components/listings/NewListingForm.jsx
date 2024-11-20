@@ -194,7 +194,7 @@ function NewListingForm() {
                   type="file"
                   id='image4'
                   name='images[image4]'
-                  className='w-[120px] lg:w-[20px] opacity-0'
+                  className='w-[120px] lg:w-[200px] opacity-0'
                   onChange={(e) => setImage4(e?.target?.files[0])}
                 />
                 <p className='text-center mt-2 text-white'>{image4?.name?.slice(0, 10) + "..."}</p>

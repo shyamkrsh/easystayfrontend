@@ -460,6 +460,25 @@ export default function Navbar() {
                                     inputProps={{
                                         style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '3px' }
                                     }}
+                                    sx={{
+                                        "& .MuiOutlinedInput-root": {
+                                            "& fieldset": {
+                                                borderColor: "white", 
+                                            },
+                                            "&:hover fieldset": {
+                                                borderColor: "white", 
+                                            },
+                                            "&.Mui-focused fieldset": {
+                                                borderColor: "white", 
+                                            },
+                                        },
+                                        "& .MuiInputLabel-root": {
+                                            color: "white", // Label color
+                                        },
+                                        "& .MuiInputLabel-root.Mui-focused": {
+                                            color: "white", // Focused label color
+                                        },
+                                    }}
                                 />
                                 {errors.name && <span className='text-red-600'>Please fill this field</span>}
                             </div>
@@ -495,20 +514,20 @@ export default function Navbar() {
                                     sx={{
                                         "& .MuiOutlinedInput-root": {
                                             "& fieldset": {
-                                                borderColor: "white", // Default border color
+                                                borderColor: "white", 
                                             },
                                             "&:hover fieldset": {
-                                                borderColor: "#90caf9", // Hover border color
+                                                borderColor: "white", 
                                             },
                                             "&.Mui-focused fieldset": {
-                                                borderColor: "#4caf50", // Focus border color
+                                                borderColor: "white", 
                                             },
                                         },
                                         "& .MuiInputLabel-root": {
                                             color: "white", // Label color
                                         },
                                         "& .MuiInputLabel-root.Mui-focused": {
-                                            color: "#4caf50", // Focused label color
+                                            color: "white", 
                                         },
                                     }}
     
