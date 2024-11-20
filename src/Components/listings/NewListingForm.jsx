@@ -126,7 +126,7 @@ function NewListingForm() {
               <TextField
                 id="price"
                 label='Enter price in rupee'
-                type="text"
+                type="number"
                 autoComplete="current-price"
                 className='w-full'
                 style={{ backgroundColor: '#3a5d5e', borderRadius: "5px" }}

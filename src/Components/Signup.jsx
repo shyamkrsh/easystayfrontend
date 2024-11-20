@@ -126,6 +126,25 @@ function Signup() {
                             inputProps={{
                                 style: { color: 'white', backgroundColor: '#628b8c', borderRadius: '5px' }
                             }}
+                            sx={{
+                                "& .MuiOutlinedInput-root": {
+                                    "& fieldset": {
+                                        borderColor: "white", // Default border color
+                                    },
+                                    "&:hover fieldset": {
+                                        borderColor: "#90caf9", // Hover border color
+                                    },
+                                    "&.Mui-focused fieldset": {
+                                        borderColor: "#4caf50", // Focus border color
+                                    },
+                                },
+                                "& .MuiInputLabel-root": {
+                                    color: "white", // Label color
+                                },
+                                "& .MuiInputLabel-root.Mui-focused": {
+                                    color: "#4caf50", // Focused label color
+                                },
+                            }}
                         />
                         {errors.name && <span className='text-red-600'>Please fill this field</span>}
                     </div>

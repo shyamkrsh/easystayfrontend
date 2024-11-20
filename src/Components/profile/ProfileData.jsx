@@ -1,4 +1,5 @@
 import React from 'react'
+import {Link} from 'react-router-dom'
 
 function ProfileData({user}) {
    
@@ -23,6 +24,8 @@ function ProfileData({user}) {
                     <p className='text-lg font-semibold mt-3 text-left text-white'>Phone: +91 {user?.mobNumber}</p>
                 </div>
                 <div className='w-[100vw h-1 bg-pink-800'></div>
+
+                <Link to="/api/changePassword"><button className='bg-primary px-4 py-2 text-white rounded-md font-semibold mt-5'>Change Password</button></Link>
             </div>
         </>
     )
