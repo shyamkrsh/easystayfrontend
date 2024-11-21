@@ -232,7 +232,7 @@ export default function Navbar() {
                     aria-label="show 17 new notifications"
                     color="inherit"
                 >
-                    <Badge badgeContent={1} color="error">
+                    <Badge badgeContent={user?.notifications?.length} color="error">
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>
@@ -376,12 +376,10 @@ export default function Navbar() {
                             size="large"
                             aria-label="show 17 new notifications"
                             color="inherit"
-
-
                         >
                             {
-                                user && user?._id ?
-                                    <Badge badgeContent={17} color="error">
+                                (user && user?._id) ?
+                                    <Badge badgeContent={user?.notifications?.length} color="error">
                                         <NotificationsIcon onClick={() => navigate("/notifications")} />
                                     </Badge>
                                     : ""

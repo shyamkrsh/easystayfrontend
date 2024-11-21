@@ -203,7 +203,7 @@ export default function DashboardNav({search, setSearch}) {
                     aria-label="show 17 new notifications"
                     color="inherit"
                 >
-                    <Badge badgeContent={17} color="error">
+                    <Badge badgeContent={user?.notifications?.length} color="error">
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>
@@ -297,7 +297,7 @@ export default function DashboardNav({search, setSearch}) {
                             aria-label="show 17 new notifications"
                             color="inherit"
                         >
-                            <Badge badgeContent={17} color="error" onClick={() => navigate("/notifications")}>
+                            <Badge badgeContent={user?.notifications?.length} color="error" onClick={() => navigate("/notifications")}>
                                 <NotificationsIcon />
                             </Badge>
                         </IconButton>

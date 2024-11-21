@@ -16,7 +16,9 @@ function Listings() {
   const [search, setSearch] = useState("");
   const [showListen, setShowListen] = useState(false);
 
-  
+  let string = 'shyam, kumar sharma , bhabhata, bihar-800013';
+  let ans = string.replaceAll(",", "").replaceAll(" ", "").replaceAll("-", "").toUpperCase();
+  console.log(ans);
 
   const { category } = useParams();                               
 
@@ -53,7 +55,7 @@ function Listings() {
         {
           search ?
             listings?.map((item) => (
-              search && item?.location.split(", ").join("").toUpperCase().includes(search.split(", ").join("").toUpperCase()) ?
+              search && item?.location.replaceAll(",", "").replaceAll(" ", "").replaceAll("-", "").toUpperCase().includes(search.replaceAll(",", "").replaceAll(" ", "").replaceAll("-", "").toUpperCase()) ?
                 <Link to={`/listings/show/${item?._id}`} key={item?._id}>
                   <Card key={item?._id} image={item?.images} title={item?.title} price={item?.price} description={item?.description} street_address={item?.location} />
                 </Link>

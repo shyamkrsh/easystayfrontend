@@ -189,6 +189,9 @@ export default function SearchNavbar({ search, setSearch , setShowListen}) {
     let handleMicSearch = () => {
         setShowListen(true);
         recognition.start();
+        setTimeout(() => {
+            setShowListen(false);
+        }, 15000);
     }
 
 
@@ -241,7 +244,7 @@ export default function SearchNavbar({ search, setSearch , setShowListen}) {
                     aria-label="show 17 new notifications"
                     color="inherit"
                 >
-                    <Badge badgeContent={1} color="error">
+                    <Badge badgeContent={user?.notifications?.length} color="error">
                         <NotificationsIcon />
                     </Badge>
                 </IconButton>
@@ -334,7 +337,7 @@ export default function SearchNavbar({ search, setSearch , setShowListen}) {
                             color="inherit"
                         >
                             {
-                                user && user._id ? <Badge badgeContent={17} color="error">
+                                user && user._id ? <Badge badgeContent={user?.notifications?.length} color="error">
                                     <NotificationsIcon onClick={() => navigate("/notifications")} />
                                 </Badge>
                                     : ""

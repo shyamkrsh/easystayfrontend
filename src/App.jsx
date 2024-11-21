@@ -13,8 +13,6 @@ import Login from './Login.jsx'
 import NewListingForm from './Components/listings/NewListingForm.jsx'
 import DashboardPage from './Components/dashboard/DashboardPage.jsx'
 import NotificationsPage from './Components/notification/NotificationsPage.jsx'
-import MessagesPage from './Components/message/MessagesPage.jsx'
-
 import {Toaster} from 'react-hot-toast'
 import AboutPage from './Components/about/AboutPage.jsx'
 import ContactPage from './Components/contact/ContactPage.jsx'
@@ -63,7 +61,6 @@ function App() {
             <Route path='/listings/new' element={<NewListingForm />} />
             <Route path='/listings/show/:id' element={<ShowListingPage />} />
             <Route path='/dashboard' element={<DashboardPage />} />
-            <Route path='/messages' element={<MessagesPage />} />
             <Route path='/notifications' element={<NotificationsPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/contact' element={<ContactPage />} />

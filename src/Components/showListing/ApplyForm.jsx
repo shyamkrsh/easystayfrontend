@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { useForm } from "react-hook-form";
@@ -7,12 +7,18 @@ import axios from 'axios';
 import { toast } from 'react-hot-toast';
 import { useState } from 'react';
 import RazorpayPayment from './RajorpayPayment';
+import { useSelector } from 'react-redux';
 
 
 function ApplyForm({ id , amount}) {
     const [search, setSearch] = useState(false)
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+    const user = useSelector((state) => state.user.user);
+    const navigate = useNavigate();
     const onSubmit = (data) => {
+        if(!user){
+            navigate("/login");
+        }
         setSearch(true)
         axios.post(`${import.meta.env.VITE_API_BASE_URL}/api/application/${id}/new`, data, {
             withCredentials: true,
@@ -24,7 +30,9 @@ function ApplyForm({ id , amount}) {
             reset()
         }).catch((err) => {
             setSearch(false);
-            toast.error(err.message);
+            toast.error(err.message, {
+                position: 'top-right'
+            });
         })
     }
 
