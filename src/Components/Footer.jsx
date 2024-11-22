@@ -20,13 +20,12 @@ function Footer() {
                                     <p>whatsapp</p>
                                 </button>
                             </Link></li>
-
                         </ul>
                     </div>
                     <div className="col-1">
                         <ul>
                             <li className='text-[1.2rem] font-semibold p-5 uppercase text-yellow-500' style={{ letterSpacing: '1px' }}>Important links</li>
-                            <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>About</Link></li>
+                            <li><Link to="/about" className='hover:underline hover:text-blue-800 text-[1rem]'>About</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Home</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Community</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Roms</Link></li>
@@ -42,7 +41,6 @@ function Footer() {
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Groups</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Branches</Link></li>
                             <li><Link to="" className='hover:underline hover:text-blue-800 text-[1rem]'>Location</Link></li>
-
                         </ul>
                     </div>
                 </div>

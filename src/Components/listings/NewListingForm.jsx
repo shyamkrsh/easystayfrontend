@@ -99,6 +99,7 @@ function NewListingForm() {
                 <option value="boysHostel" >Boys Hostel</option>
                 <option value="girlsHostel" >Girls Hostel</option>
                 <option value="roomForRent" >Room for Rent</option>
+                <option value="roomsForCollege" >Rooms near NGP patna-13</option>
               </select>
               {errors.name && <span className='text-red-600'>Please fill this field</span>}
             </div>

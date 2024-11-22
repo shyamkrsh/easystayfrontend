@@ -14,7 +14,7 @@ const itemIcons = [
     {
         image: hostel,
         title: "Rooms near NGP Patna-13",
-        link: `/listings/search/${"rooms-college"}`,
+        link: `/listings/search/${"roomsForCollege"}`,
         content: 'Here you can search for rooms near New Government Polytechnic patna -13',
     },
     {
