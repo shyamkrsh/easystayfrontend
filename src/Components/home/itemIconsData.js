@@ -13,6 +13,12 @@ import roomsForRent from '../../assets/images/roomsForRent.png'
 const itemIcons = [
     {
         image: hostel,
+        title: "Rooms near NGP Patna-13",
+        link: `/listings/search/${"rooms-college"}`,
+        content: 'Here you can search for rooms near New Government Polytechnic patna -13',
+    },
+    {
+        image: hostel,
         title: "Hostels",
         link: `/listings/search/${"hostel"}`,
         content: 'Here you can search for Hostel related services',
