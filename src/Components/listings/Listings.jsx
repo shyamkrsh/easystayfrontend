@@ -66,13 +66,13 @@ function Listings() {
           </div>
           <div className={showFilter ? 'bg-slate-200 w-[100%] md:w-[30rem]': "hidden"}>
             <ul>
-              <li className='px-10 py-2 cursor-pointer border border-b-slate-700'><p className='text-xl font-semibold'>Price</p></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(1000, 2000)}><button >₹ 1,000 -- ₹ 2,000</button></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(2000, 3000)}><button >₹ 2,000 -- ₹ 3,000</button></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(3000, 4000)}><button >₹ 3,000 -- ₹ 4,000</button></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(4000, 5000)}><button >₹ 4,000 -- ₹ 5,000</button></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(5000, 10000)}><button >₹ 5,000 -- ₹ 10,000</button></li>
-              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700' onClick={() => handleFilter(10000, 100000000)}><button >Above ₹ 10, 000</button></li>
+              <li className='px-10 py-2 cursor-pointer border border-b-slate-700 text-black'><p className='text-xl font-semibold'>Price</p></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(1000, 2000)}><button >₹ 1,000 -- ₹ 2,000</button></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(2000, 3000)}><button >₹ 2,000 -- ₹ 3,000</button></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(3000, 4000)}><button >₹ 3,000 -- ₹ 4,000</button></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(4000, 5000)}><button >₹ 4,000 -- ₹ 5,000</button></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(5000, 10000)}><button >₹ 5,000 -- ₹ 10,000</button></li>
+              <li className='hover:bg-slate-300 px-10 py-2 cursor-pointer border border-b-slate-700 text-black' onClick={() => handleFilter(10000, 100000000)}><button >Above ₹ 10, 000</button></li>
             </ul>
           </div>
         </div>
