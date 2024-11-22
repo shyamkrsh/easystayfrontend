@@ -19,11 +19,8 @@ function Listings() {
   const [showFilter, setShowFilter] = useState(false);
 
   const [minPrice, setMinPrice] = useState(0);
-  const [maxPrice, setMaxPrice] = useState(0);
+  const [maxPrice, setMaxPrice] = useState(10000000);
 
-  let handleShowFilter = () => {
-    setShowFilter(!showFilter);
-  }
 
   let handleFilter = (minPrice, maxPrice) => {
     setMinPrice(minPrice);
@@ -84,7 +81,7 @@ function Listings() {
           {
             search ?
               listings?.map((item) => (
-                search && search.replaceAll(",", "").toLowerCase().split(" ").some((word) => item.location.replaceAll(",", "").toLowerCase().includes(word) || item.title.replaceAll(",", "").toLowerCase().includes(word)) && ((item?.price >= minPrice) && (item?.price <= maxPrice)) ?
+                search && search.replaceAll(",", "").toLowerCase().split(" ").some((word) => item.location.replaceAll(",", "").toLowerCase().includes(word) && (item?.price >= minPrice && item?.price <= maxPrice) || item.title.replaceAll(",", "").toLowerCase().includes(word) && (item?.price >= minPrice && item?.price <= maxPrice)) ?
                   <Link to={`/listings/show/${item?._id}`} key={item?._id}>
                     <Card key={item?._id} image={item?.images} title={item?.title} price={item?.price} description={item?.description} street_address={item?.location} />
                   </Link>
