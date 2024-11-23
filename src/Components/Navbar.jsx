@@ -133,6 +133,7 @@ export default function Navbar() {
 
         }).catch((err) => {
             setSearch(false);
+            console.log(err)
             toast.error(err.message, {
                 position: 'top-right'
             });
@@ -301,9 +302,9 @@ export default function Navbar() {
                                     <ul className='mt-8 sidebar-list ps-5 text-white'>
 
                                         <Link to="/"><li className='text-white'><FaHome id='sidebar-icon' /> Home</li></Link>
-                                        <Link to={user && user?._id ? "/dashboard" : '/'}><li className='text-white'><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
+                                        <Link to={user && user?._id ? "/dashboard" : '/'} className={user && user?._id ? 'text-white': 'hidden'}><li className='text-white'><MdDashboard id='sidebar-icon' />Dashboard</li></Link>
 
-                                        <Link to={user && user?._id ? "/listings/new" : '/'}><li className='text-white'><AddIcon id='sidebar-icon' />Post services</li></Link>
+                                        <Link to={user && user?._id ? "/listings/new" : '/'} className={user && user?._id ? 'text-white': 'hidden'}><li className='text-white'><AddIcon id='sidebar-icon' />Post services</li></Link>
 
                                         <Link to="/about" ><li className='text-white'><FcAbout id='sidebar-icon' /> About Us</li></Link>
                                         <Link to="/contact" ><li className='text-white'><IoIosContact id='sidebar-icon' /> Contact Us</li></Link>
