@@ -19,7 +19,7 @@ function ListingsDetails({ owner, data , id}) {
         try {
             axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/reviews/${id}/show`).then((res) => {
                 setListingData(res?.data?.data?.reviews);
-                setCountReviews(avgRating/listingData?.length);
+                setCountReviews(Math.floor(avgRating/listingData?.length));
             }).catch((err) => {
                 console.log(err);
             })
