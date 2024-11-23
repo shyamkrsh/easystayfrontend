@@ -5,11 +5,11 @@ import React, { useState, useEffect } from 'react'
 function ShowReviews({ id }) {
     const [listingData, setListingData] = useState(null);
 
+
     useEffect(() => {
         try {
             axios.get(`${import.meta.env.VITE_API_BASE_URL}/api/reviews/${id}/show`).then((res) => {
                 setListingData(res?.data?.data?.reviews);
-
             }).catch((err) => {
                 console.log(err);
             })
