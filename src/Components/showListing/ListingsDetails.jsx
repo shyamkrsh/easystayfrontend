@@ -30,7 +30,7 @@ function ListingsDetails({ owner, data , id}) {
    
     return (
         <div>
-            <div className='main-container w-[100%] md:w-[100%]'>
+            <div className='main-container w-[100%]'>
                 <h2 className=' font-semibold text-2xl md:text-3xl text-white'>{data?.title}</h2>
                 <h4 className={(data?.availability == 'available') ? 'text-green-500 text-xl' : 'text-red-700'}>{data?.availability}</h4>
                 {/* Rating goes here */}

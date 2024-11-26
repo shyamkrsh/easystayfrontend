@@ -54,7 +54,7 @@ export default function DeleteListing({ id }) {
                 onClose={handleClose}
                 aria-describedby="alert-dialog-slide-description"
             >
-                <DialogTitle><p className='text-red-600'>Alert</p></DialogTitle>
+                <DialogTitle><p className='text-2xl font-bold'>Alert</p></DialogTitle>
                 <DialogContent>
                     <DialogContentText id="alert-dialog-slide-description">
                         Are you agree to delete this services

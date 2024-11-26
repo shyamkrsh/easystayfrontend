@@ -79,7 +79,7 @@ function ShowListingPage() {
 
       </div>
 
-      <div className='flex flex-col md:flex-row justify-between items-center px-[10%] md:px-[15%] mt-8 mb-16 gap-24'>
+      <div className='flex flex-col md:flex-row items-center justify-between px-[10%] md:px-[15%] mt-8 mb-16 gap-24'>
         <ListingsDetails owner={owner} data={listingData ? listingData : ""} id={id} />
         <ApplyForm id={id} amount={listingData?.price} />
       </div>
