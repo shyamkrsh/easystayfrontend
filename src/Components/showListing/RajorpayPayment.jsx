@@ -45,7 +45,7 @@ const RazorpayPayment = ({ amount }) => {
                 prefill: {
                     name: "Shyam Kumar Sharma",
                     email: "sksh58573@gmail.com",
-                    contact: "9999999999",
+                    contact: "1234567890",
                 },
                 theme: {
                     color: "#192874",

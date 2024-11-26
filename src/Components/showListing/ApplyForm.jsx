@@ -24,9 +24,15 @@ function ApplyForm({ id , amount}) {
             withCredentials: true,
         }).then((res) => {
             setSearch(false);
-            toast.success("Application accepted", {
-                position: 'top-right'
-            })
+            if(res.data.success){
+                toast.success("Application accepted", {
+                    position: 'top-right'
+                })
+            }else{
+                toast.error(res.data.message, {
+                    position: 'top-right'
+                });
+            }
             reset()
         }).catch((err) => {
             setSearch(false);
