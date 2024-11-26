@@ -126,7 +126,7 @@ function NewListingForm() {
             <div className='mt-5'>
               <TextField
                 id="price"
-                label='Enter price in rupee'
+                label='Enter price for per month'
                 type="number"
                 autoComplete="current-price"
                 className='w-full'
