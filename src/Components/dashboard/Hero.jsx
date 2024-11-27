@@ -34,8 +34,8 @@ function Hero() {
                     <Link to="/" >
                         <h1 className='text-center font-bold text-2xl my-5 text-black'>𝑾𝒆𝒍𝒄𝒐𝒎𝒆 𝒕𝒐 𝗘𝗮𝘀𝘆𝗦𝘁𝗮𝘆</h1>
                     </Link>
-                    <div className='w-full'>
-                        <ul className=' w-[100%] list-none'>
+                    <div className='w-full bg-slate-50 h-[100%]'>
+                        <ul className=' w-[100%] list-none bg-slate-50 h-[100vh]'>
                             <li className='ps-10 hover:bg-slate-200 py-2' onClick={() => {handleCloseSideBar(), setShowCount(1)}}>
                                 <Link className='flex items-center gap-3 opacity-80 hover:opacity-100'>
                                     <MdLocalPostOffice className='text-3xl' />
