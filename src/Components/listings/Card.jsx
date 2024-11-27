@@ -4,7 +4,7 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-function Card({ image, title, price, description, street_address }) {
+function Card({ image, title, price, duration, description, street_address }) {
     let sliderRef = useRef(null);
 
     const settings = {
@@ -46,7 +46,7 @@ function Card({ image, title, price, description, street_address }) {
             </div>
             <div className="card-body">
                 <h3 className="card-title -mt-3 text-white text-2xl">{title}</h3>
-                <p className='text-slate-400'>₹ {price}/-</p>
+                <p className='text-slate-400'>₹ {price}/{duration}</p>
                 <p className='text-slate-300'>{street_address}</p>
                 <p className="text-slate-300 pb-2">{description.slice(0, 50)}...</p>
             </div>

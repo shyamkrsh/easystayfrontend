@@ -63,7 +63,7 @@ function NewListingForm() {
       <DemoNav heading={"Online your services"} />
       <div className='w-[100vw] h-[150vh]' style={{ backgroundColor: '#141d30' }}>
 
-        <div className='w-[100%] mt-36 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md '>
+        <div className='w-[100%] pt-36 md:pt-5 md:mt-44 px-10 py-5 md:w-[40%]  absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] border shadow-md '>
           <h1 className='text-2xl font-semibold text-center text-white'>Online Form</h1>
           <form onSubmit={handleSubmit(onSubmit)} encType="multipart/form-data">
 
@@ -123,10 +123,10 @@ function NewListingForm() {
             </div>
            
 
-            <div className='mt-5'>
+            <div className='mt-5 flex'>
               <TextField
                 id="price"
-                label='Enter price for per month'
+                label='Enter price in rupee'
                 type="number"
                 autoComplete="current-price"
                 className='w-full'
@@ -139,6 +139,14 @@ function NewListingForm() {
                   style: { color: 'white', borderRadius: "10px" } // Makes input text white
                 }}
               />
+              {errors.name && <span className='text-red-600'>Please fill this field</span>}
+
+              <select id='duration' name='duration' className='border border-slate-300 w-100 h-[55px] px-3 text-slate-800'
+                {...register("duration", { required: false })}
+              >
+                <option value="month" >1 month</option>
+                <option value="day" >1 day</option>
+              </select>
               {errors.name && <span className='text-red-600'>Please fill this field</span>}
             </div>
 

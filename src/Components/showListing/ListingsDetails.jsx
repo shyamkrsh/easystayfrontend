@@ -48,7 +48,7 @@ function ListingsDetails({ owner, data , id}) {
                 <div>
                     <img src={map} className='my-5 rounded-md' />
                 </div>
-                <p className='text-slate-300'><span className='mt-6 text-xl font-semibold text-white'>Price</span> : ₹ {data?.price}/-</p>
+                <p className='text-slate-300'><span className='mt-6 text-xl font-semibold text-white'>Price</span> : ₹ {data?.price}/{data?.duration}</p>
                 <p className='text-slate-300'><span className='text-xl font-semibold text-white'>Owner</span> : {owner?.name}</p>
                 <p className='text-slate-300'><span className='text-xl font-semibold text-white'>Contact</span> : +91 {owner?.mobNumber}</p>
 
