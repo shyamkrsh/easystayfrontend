@@ -96,11 +96,3 @@ EasyStay is a web application designed to simplify the rental process by connect
    ```
 
 
-
-## 🚀 Future Enhancements  
-- **Owner Dashboard:** For managing properties and user accounts.  
-- **Advanced Search:** Add additional filters like amenities and reviews.  
-- **Payment Integration:** Enable online payment options for booking.  
-- **Mobile App:** Extend functionality with a React Native app.  
-
----
